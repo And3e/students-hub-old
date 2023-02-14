@@ -1,4 +1,4 @@
-C="default message"
+C="default commit"
 
 commit:
 	git add .
