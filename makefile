@@ -1,8 +1,8 @@
-COM="default message"
+C="default message"
 
 commit:
 	git add .
-	git commit -m $(COM)
+	git commit -m $(C)
 git:
 	make commit
 	git push
