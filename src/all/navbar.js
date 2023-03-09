@@ -5,11 +5,22 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+/* imgs */
+import logo from './../img/logos/logo-tr.png'
+
 function MainNav() {
   return (
     <Navbar bg='light' expand='lg'>
       <Container fluid>
-        <Navbar.Brand href='#'>Navbar scroll</Navbar.Brand>
+        <Navbar.Brand href='#home'>
+          <img
+            src={logo}
+            width='30'
+            height='30'
+            className='d-inline-block align-top'
+            alt='Students Hub logo'
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='navbarScroll' />
         <Navbar.Collapse id='navbarScroll'>
           <Nav
