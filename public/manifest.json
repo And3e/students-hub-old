@@ -1,21 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Stutents HUB",
+  "name": "Stutents HUB | Da Studenti per Studenti",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "students-hub.ico",
+      "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "../src/img/logos/logo-tr.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "3409x3409"
     },
     {
-      "src": "logo512.png",
+      "src": "../src/img/logos/logo-scritta-tr.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "3409x666"
     }
   ],
   "start_url": ".",
