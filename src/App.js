@@ -1,9 +1,9 @@
-import AppShellDemo from './all/navbar2.js'
+import MainNavbar from './all/navbar.js'
 
 function App() {
   return (
     <>
-      <AppShellDemo></AppShellDemo>
+      <MainNavbar></MainNavbar>
     </>
   )
 }
