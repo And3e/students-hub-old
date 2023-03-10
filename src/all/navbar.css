@@ -1,0 +1,34 @@
+.logo {
+  display: none;
+}
+
+.img-center {
+  vertical-align: middle;
+}
+
+.btn-bell {
+  transform: translateY(-2.5px);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header-sub-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-short-logo {
+  display: none;
+}
+
+.side-bar {
+  transition: width 0.2s ease-in-out;
+}
+
+.content {
+  transition: margin-left 0.2s ease-in-out;
+}

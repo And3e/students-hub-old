@@ -4,8 +4,6 @@ import {
   AppShell,
   Navbar,
   Header,
-  Footer,
-  Aside,
   Text,
   MediaQuery,
   Burger,
@@ -14,9 +12,8 @@ import {
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import { ActionIcon } from '@mantine/core'
 
-import './../index.css'
+import './navbar.css'
 
 /* imgs */
 import logo from './../img/logos/logo-tr.png'
@@ -92,7 +89,7 @@ export default function AppShellDemo() {
                 src={logo_scritta}
                 height='30'
                 className='d-inline-block align-center'
-                alt='Students Hub logo'
+                alt='Students Hub logo long'
               />
             </div>
             <div className='header-sub-container'>
@@ -105,6 +102,14 @@ export default function AppShellDemo() {
                 />
                 <Button variant='outline-primary'>Cerca</Button>
               </Form>
+              <div className='header-short-logo'>
+                <img
+                  src={logo}
+                  height='30'
+                  className='d-inline-block align-center'
+                  alt='Students Hub logo'
+                />
+              </div>
               <Button>
                 <div>
                   <BellFill className='btn-bell' />
