@@ -1,5 +1,7 @@
 import MainNavbar from './all/navbar.js'
 
+import './index.css'
+
 function App() {
   return (
     <>

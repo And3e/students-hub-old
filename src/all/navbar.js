@@ -30,15 +30,23 @@ export default function MainNavbar() {
         document.querySelector('.side-bar').style.width = '18rem'
         document.querySelector('.header-short-logo').style.display = 'none'
         document.querySelector('.logo-header').style.display = 'initial'
+        document.querySelector('.header-support-child').style.display = 'none'
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         document.querySelector('.logo-header').style.width = '12.5rem'
         document.querySelector('.side-bar').style.width = '3rem'
         document.querySelector('.header-short-logo').style.display = 'none'
         document.querySelector('.logo-header').style.display = 'initial'
+        document.querySelector('.header-support-child').style.display = 'none'
       } else {
         document.querySelector('.side-bar').style.width = '80%'
         document.querySelector('.header-short-logo').style.display = 'initial'
         document.querySelector('.logo-header').style.display = 'none'
+        document.querySelector('.header-support-child').style.display =
+          'initial'
+        document.querySelector('.header-short-logo').style.transform =
+          'translateX(-' +
+          document.querySelector('.mantine-Burger-root').offsetWidth / 2 +
+          'px)'
       }
       document.querySelector('.header-sub-container').style.width =
         document.querySelector('.header-container').offsetWidth -
@@ -126,17 +134,18 @@ export default function MainNavbar() {
                 alt='Students Hub logo long'
               />
             </div>
-            <div className='header-short-logo'>
-              <img
-                src={logo}
-                height='30'
-                className='d-inline-block align-center'
-                alt='Students Hub logo'
-              />
-            </div>
             <div className='header-sub-container'>
+              <div className='header-support-child' />
+              <div className='header-short-logo'>
+                <img
+                  src={logo}
+                  height='40'
+                  className='d-inline-block align-center'
+                  alt='Students Hub logo'
+                />
+              </div>
               <SearchBox inHeader={true} />
-              <Button>
+              <Button className='rounded-btn'>
                 <div>
                   <BellFill className='btn-bell' />
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Search } from 'react-bootstrap-icons'
 
 import './search.css'
@@ -47,11 +47,11 @@ function SearchBox(inHeader) {
     }
   }
 
-  function handleShortcut(event) {
+  const handleShortcut = useCallback((event) => {
     if (event.altKey && event.key === 's') {
       onFocus()
     }
-  }
+  }, [])
 
   useEffect(() => {
     function handleResize() {
@@ -80,14 +80,14 @@ function SearchBox(inHeader) {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [inHeader])
 
   useEffect(() => {
     window.addEventListener('keydown', handleShortcut)
     return () => {
       window.removeEventListener('keydown', handleShortcut)
     }
-  }, [])
+  }, [handleShortcut])
 
   return (
     <div className='search-container'>
