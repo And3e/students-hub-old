@@ -11,7 +11,7 @@ import {
 } from '@mantine/core'
 
 import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
+import SearchBox from './components/search.js'
 
 import './navbar.css'
 
@@ -28,11 +28,17 @@ export default function MainNavbar() {
       if (window.innerWidth >= 1200) {
         document.querySelector('.logo-header').style.width = '18.75rem'
         document.querySelector('.side-bar').style.width = '18rem'
+        document.querySelector('.header-short-logo').style.display = 'none'
+        document.querySelector('.logo-header').style.display = 'initial'
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         document.querySelector('.logo-header').style.width = '12.5rem'
         document.querySelector('.side-bar').style.width = '3rem'
+        document.querySelector('.header-short-logo').style.display = 'none'
+        document.querySelector('.logo-header').style.display = 'initial'
       } else {
         document.querySelector('.side-bar').style.width = '80%'
+        document.querySelector('.header-short-logo').style.display = 'initial'
+        document.querySelector('.logo-header').style.display = 'none'
       }
       document.querySelector('.header-sub-container').style.width =
         document.querySelector('.header-container').offsetWidth -
@@ -120,24 +126,16 @@ export default function MainNavbar() {
                 alt='Students Hub logo long'
               />
             </div>
+            <div className='header-short-logo'>
+              <img
+                src={logo}
+                height='30'
+                className='d-inline-block align-center'
+                alt='Students Hub logo'
+              />
+            </div>
             <div className='header-sub-container'>
-              <Form className='d-flex'>
-                <Form.Control
-                  type='search'
-                  placeholder='Cerca qualcosa...'
-                  className='me-2'
-                  aria-label='Cerca qualcosa...'
-                />
-                <Button variant='outline-primary'>Cerca</Button>
-              </Form>
-              <div className='header-short-logo'>
-                <img
-                  src={logo}
-                  height='30'
-                  className='d-inline-block align-center'
-                  alt='Students Hub logo'
-                />
-              </div>
+              <SearchBox inHeader={true} />
               <Button>
                 <div>
                   <BellFill className='btn-bell' />
