@@ -12,6 +12,7 @@ function SearchBox(inHeader) {
     inputRef.current.focus()
     document.querySelector('.input-container').style.width = '95%'
     document.querySelector('.shortcut-box').style.opacity = '0'
+    document.querySelector('.shortcut-box').style.display = 'none'
   }
 
   function handleClick() {
@@ -24,9 +25,13 @@ function SearchBox(inHeader) {
       if (inputRef.current.value.trim() === '') {
         setIsExpanded(false)
       }
+      document.querySelector('.shortcut-box').style.opacity = '0'
+      document.querySelector('.shortcut-box').style.display = 'none'
+    } else {
+      document.querySelector('.shortcut-box').style.opacity = '1'
+      document.querySelector('.shortcut-box').style.display = 'flex'
     }
     document.querySelector('.input-container').style.width = '75%'
-    document.querySelector('.shortcut-box').style.opacity = '1'
   }
 
   function handleKeyPress(event) {
@@ -43,6 +48,7 @@ function SearchBox(inHeader) {
         inputRef.current.blur()
         document.querySelector('.input-container').style.width = '75%'
         document.querySelector('.shortcut-box').style.opacity = '1'
+        document.querySelector('.shortcut-box').style.display = 'flex'
       }
     }
   }
@@ -52,6 +58,16 @@ function SearchBox(inHeader) {
       onFocus()
     }
   }, [])
+
+  const handleShortcutOver = () => {
+    document.querySelector('.shortcut-box').style.opacity = '0'
+    document.querySelector('.shortcut-box').style.display = 'none'
+  }
+
+  const handleShortcutLeave = () => {
+    document.querySelector('.shortcut-box').style.opacity = '1'
+    document.querySelector('.shortcut-box').style.display = 'flex'
+  }
 
   useEffect(() => {
     function handleResize() {
@@ -95,7 +111,12 @@ function SearchBox(inHeader) {
         className={`search-box ${isExpanded ? 'expanded' : ''}`}
         onClick={handleClick}>
         <Search className='search-icon' />
-        <div className='shortcut-box'>Alt + S</div>
+        <div
+          className='shortcut-box'
+          onMouseOver={handleShortcutOver}
+          onMouseLeave={handleShortcutLeave}>
+          Alt + S
+        </div>
         <div className='input-container'>
           <input
             type='search'

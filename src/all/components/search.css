@@ -68,4 +68,5 @@
   font-weight: bold;
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
+  transition: display 0.2s ease-in-out;
 }
