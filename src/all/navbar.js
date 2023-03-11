@@ -11,7 +11,8 @@ import {
 } from '@mantine/core'
 
 import Button from 'react-bootstrap/Button'
-import SearchBox from './components/search.js'
+import SearchHeader from './components/searchHeader.js'
+import SearchSide from './components/searchSide.js'
 
 import './navbar.css'
 
@@ -106,7 +107,9 @@ export default function MainNavbar() {
             hidden={!opened}
             width={{ sm: 80, lg: 300 }}
             className='side-bar'>
-            <Text>Bella</Text>
+            <div className='d-inline-flex p-2'>
+              <SearchSide />
+            </div>
           </Navbar>
         </div>
       }
@@ -144,7 +147,7 @@ export default function MainNavbar() {
                   alt='Students Hub logo'
                 />
               </div>
-              <SearchBox inHeader={true} />
+              <SearchHeader />
               <Button className='rounded-btn'>
                 <div>
                   <BellFill className='btn-bell' />

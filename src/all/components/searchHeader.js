@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Search } from 'react-bootstrap-icons'
 
-import './search.css'
+import './search-header.css'
 
-function SearchBox(inHeader) {
+function SearchHeader(inHeader) {
   const [isExpanded, setIsExpanded] = useState(false)
   const inputRef = useRef(null)
 
@@ -134,4 +134,4 @@ function SearchBox(inHeader) {
   )
 }
 
-export default SearchBox
+export default SearchHeader
