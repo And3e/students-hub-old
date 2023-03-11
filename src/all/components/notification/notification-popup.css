@@ -23,3 +23,8 @@
 .icon-resizer {
   transform: translateX(-2px);
 }
+
+.notification-container {
+  border-radius: 15px;
+  padding: 16px 0px 16px 0px;
+}

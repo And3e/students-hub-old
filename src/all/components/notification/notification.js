@@ -1,70 +1,41 @@
-import React, {
-  useEffect,
-  useCallback,
-  useRef,
-  useState,
-  forwardRef,
-} from 'react'
-import { Popover, Text, Button } from '@mantine/core'
+import React, { useState } from 'react'
+import { Text } from '@mantine/core'
 
-import './notification.css'
-import { BellFill } from 'react-bootstrap-icons'
-
-const Notification = forwardRef((props, ref) => {
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false)
-
-  const handleShortcut = useCallback(
-    (event) => {
-      if (event.altKey && event.key === 'n') {
-        simulateClick()
-        setIsNotificationOpen(true)
-      }
-      if (event.key === 'Escape' && isNotificationOpen) {
-        simulateClick()
-        setIsNotificationOpen(false)
-      }
-    },
-    [isNotificationOpen]
-  )
-
-  const handleShortcutRef = useRef(handleShortcut)
-  useEffect(() => {
-    handleShortcutRef.current = handleShortcut
-  }, [handleShortcut])
-
-  useEffect(() => {
-    function handleKeyDown(event) {
-      handleShortcutRef.current(event)
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
-
-  function simulateClick() {
-    const button = document.querySelector('.rounded-btn')
-    if (button) {
-      button.click()
-    }
-  }
+const Notification = ({ title, date, content, isFirst }) => {
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <Popover ref={ref} width={200} position='bottom' withArrow shadow='md'>
-      <Popover.Target>
-        <Button className='rounded-btn'>
-          <div className='icon-resizer'>
-            <BellFill className='bell-icon' />
-          </div>
-        </Button>
-      </Popover.Target>
-      <Popover.Dropdown>
-        <Text size='md'>
-          This is uncontrolled popover, it is opened when button is clicked
+    <div
+      style={{
+        transition: 'background-color 0.3s',
+        backgroundColor: isHovered ? '#f0f0f0' : 'transparent',
+        cursor: 'pointer',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
+      <div
+        style={{
+          borderTop: isFirst ? 'none' : '1px solid #ddd',
+          paddingTop: isFirst ? 5 : 13,
+          paddingBottom: 13,
+          width: '90%',
+        }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Text weight={700} size='sm'>
+            {title}
+          </Text>
+          <Text weight={700} size='sm'>
+            {date}
+          </Text>
+        </div>
+        <Text size='sm' style={{ marginTop: 8 }}>
+          {content}
         </Text>
-      </Popover.Dropdown>
-    </Popover>
+      </div>
+    </div>
   )
-})
+}
 
 export default Notification

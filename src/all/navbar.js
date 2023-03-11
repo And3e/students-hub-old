@@ -12,7 +12,7 @@ import {
 
 import SearchHeader from './components/search/searchHeader.js'
 import SearchSide from './components/search/searchSide.js'
-import Notification from './components/notification/notification.js'
+import NotificationPopUp from './components/notification/notification-popup.js'
 
 import './navbar.css'
 
@@ -149,7 +149,7 @@ export default function MainNavbar() {
                 </a>
               </div>
               <SearchHeader />
-              <Notification />
+              <NotificationPopUp />
             </div>
           </div>
         </Header>
