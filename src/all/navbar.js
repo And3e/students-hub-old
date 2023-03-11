@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 import {
   AppShell,
   Navbar,
@@ -130,22 +130,26 @@ export default function MainNavbar() {
             </MediaQuery>
 
             <div className='logo-header'>
-              <img
-                src={logo_scritta}
-                height='30'
-                className='d-inline-block align-center'
-                alt='Students Hub logo long'
-              />
+              <a href='/'>
+                <img
+                  src={logo_scritta}
+                  height='30'
+                  className='d-inline-block align-center'
+                  alt='Students Hub logo long'
+                />
+              </a>
             </div>
             <div className='header-sub-container'>
               <div className='header-support-child' />
               <div className='header-short-logo'>
-                <img
-                  src={logo}
-                  height='40'
-                  className='d-inline-block align-center'
-                  alt='Students Hub logo'
-                />
+                <a href='/'>
+                  <img
+                    src={logo}
+                    height='40'
+                    className='d-inline-block align-center'
+                    alt='Students Hub logo'
+                  />
+                </a>
               </div>
               <SearchHeader />
               <Button className='rounded-btn'>
