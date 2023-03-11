@@ -39,7 +39,7 @@ export default function MainNavbar() {
         document.querySelector('.logo-header').style.display = 'initial'
         document.querySelector('.header-support-child').style.display = 'none'
       } else {
-        document.querySelector('.side-bar').style.width = '80%'
+        document.querySelector('.side-bar').style.width = '85%'
         document.querySelector('.header-short-logo').style.display = 'initial'
         document.querySelector('.logo-header').style.display = 'none'
         document.querySelector('.header-support-child').style.display =
@@ -72,7 +72,7 @@ export default function MainNavbar() {
       document.querySelector('.side-bar').style.width = '13rem'
       document.querySelector('.content').style.marginLeft = '8rem'
     } else if (window.innerWidth < 767) {
-      document.querySelector('.side-bar').style.width = '80%'
+      document.querySelector('.side-bar').style.width = '85%'
     }
   }
 
@@ -81,7 +81,7 @@ export default function MainNavbar() {
       document.querySelector('.side-bar').style.width = '3rem'
       document.querySelector('.content').style.marginLeft = ''
     } else if (window.innerWidth < 767) {
-      document.querySelector('.side-bar').style.width = '80%'
+      document.querySelector('.side-bar').style.width = '85%'
     }
   }
 
