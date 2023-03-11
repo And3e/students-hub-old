@@ -1,0 +1,25 @@
+.icon-resizer {
+  width: 45px !important;
+}
+
+.rounded-btn {
+  width: 45px;
+  height: 40px;
+  background-color: #0094de;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  cursor: pointer; /* Add cursor pointer for clickability */
+}
+
+.bell-icon {
+  font-size: 20px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-resizer {
+  transform: translateX(-2px);
+}

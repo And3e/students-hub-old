@@ -42,19 +42,19 @@
   top: 50%;
   right: 2px;
   margin-left: 10px;
-  transform: translateY(-50%);
+  transform: translateY(-50.4%);
   width: 36px;
   height: 36px;
   opacity: 1;
   transition: all 0.3s ease-in-out;
-  background-color: #f5f5f5;
-  color: #0094de;
+  background-color: #0094de;
+  color: #ffffff;
   border: none;
   border-radius: 20px;
   font-size: 20px;
   font-weight: bold;
 }
 
-#btn-submit.clicked {
-  background-color: #e5e5e5;
+#btn-submit:hover {
+  background-color: #007bff;
 }

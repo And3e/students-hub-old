@@ -2,10 +2,6 @@
   vertical-align: middle;
 }
 
-.btn-bell {
-  transform: translateY(-2.5px);
-}
-
 .header-container {
   display: flex;
   align-items: center;

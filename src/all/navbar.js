@@ -10,18 +10,15 @@ import {
   useMantineTheme,
 } from '@mantine/core'
 
-import Button from 'react-bootstrap/Button'
-import SearchHeader from './components/searchHeader.js'
-import SearchSide from './components/searchSide.js'
+import SearchHeader from './components/search/searchHeader.js'
+import SearchSide from './components/search/searchSide.js'
+import Notification from './components/notification/notification.js'
 
 import './navbar.css'
 
 /* imgs */
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
-
-/* logos */
-import { BellFill } from 'react-bootstrap-icons'
 
 export default function MainNavbar() {
   useEffect(() => {
@@ -152,11 +149,7 @@ export default function MainNavbar() {
                 </a>
               </div>
               <SearchHeader />
-              <Button className='rounded-btn'>
-                <div>
-                  <BellFill className='btn-bell' />
-                </div>
-              </Button>
+              <Notification />
             </div>
           </div>
         </Header>
