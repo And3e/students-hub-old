@@ -8,7 +8,8 @@ const Notification = ({ title, date, content, isFirst }) => {
     <div
       style={{
         transition: 'background-color 0.3s',
-        backgroundColor: isHovered ? '#f0f0f0' : 'transparent',
+        backgroundColor: isHovered ? '#f0f0f0' : '#f7f8f9',
+        height: 80,
         cursor: 'pointer',
         display: 'flex',
         justifyContent: 'center',

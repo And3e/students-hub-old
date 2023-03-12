@@ -9,7 +9,7 @@ import { Popover, Button } from '@mantine/core'
 
 import './notification-popup.css'
 import { BellFill } from 'react-bootstrap-icons'
-import Notification from './notification.js'
+import NotificationList from './notification-list.js'
 
 const NotificationPopUp = forwardRef((props, ref) => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false)
@@ -60,24 +60,7 @@ const NotificationPopUp = forwardRef((props, ref) => {
         </Button>
       </Popover.Target>
       <Popover.Dropdown className='notification-container'>
-        <Notification
-          title='Titolo notifica'
-          date='23:13'
-          content='Questo è un esempio di notifica'
-          isFirst={true}
-        />
-        <Notification
-          title='Notifica 2'
-          date='22:47'
-          content="Questa è un'altra notifica"
-          isFirst={false}
-        />
-        <Notification
-          title='Notifica 3'
-          date='10/03, 00:06'
-          content='Questa è la meno recente delle 3'
-          isFirst={false}
-        />
+        <NotificationList />
       </Popover.Dropdown>
     </Popover>
   )
