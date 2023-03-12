@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text } from '@mantine/core'
 
-const Notification = ({ title, date, content, isFirst }) => {
+const Notification = ({ title, date, content }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -18,9 +18,9 @@ const Notification = ({ title, date, content, isFirst }) => {
       onMouseLeave={() => setIsHovered(false)}>
       <div
         style={{
-          borderTop: isFirst ? 'none' : '1px solid #ddd',
-          paddingTop: isFirst ? 5 : 13,
+          borderBottom: '1px solid #ddd',
           paddingBottom: 13,
+          paddingTop: 13,
           width: '90%',
         }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>

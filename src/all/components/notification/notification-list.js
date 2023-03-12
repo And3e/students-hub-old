@@ -9,21 +9,18 @@ const NotificationList = () => {
       title: 'Titolo notifica',
       date: '23:13',
       content: 'Questo è un esempio di notifica',
-      isFirst: true,
     },
     {
       id: 2,
       title: 'Notifica 2',
       date: '22:47',
       content: "Questa è un'altra notifica",
-      isFirst: false,
     },
     {
       id: 3,
       title: 'Notifica 3',
       date: '10/03, 00:06',
       content: 'Questa è la meno recente',
-      isFirst: false,
     },
   ])
 

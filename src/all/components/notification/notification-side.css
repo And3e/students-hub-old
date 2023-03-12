@@ -1,9 +1,8 @@
-.icon-resizer {
+.icon-resizer-side {
   width: 45px !important;
-  transform: translateX(-2px);
 }
 
-.rounded-btn {
+.rounded-btn-side {
   width: 45px;
   height: 40px;
   background-color: #0094de;
@@ -12,16 +11,15 @@
   display: flex;
   align-items: center;
   padding-left: 15px;
-  cursor: pointer; /* Add cursor pointer for clickability */
+  cursor: pointer;
 }
 
-.bell-icon {
+.bell-icon-side {
   font-size: 20px;
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
 
-.notification-container {
-  border-radius: 15px;
-  padding: 16px 0px 16px 0px;
+.icon-resizer-side {
+  transform: translateX(-2px);
 }
