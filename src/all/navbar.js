@@ -12,6 +12,7 @@ import {
 
 import SearchHeader from './components/search/searchHeader.js'
 import SearchSide from './components/search/searchSide.js'
+import SideMenu from './components/menu/side-menu.js'
 import NotificationPopUp from './components/notification/notification-popup.js'
 import NotificationSide from './components/notification/notification-side.js'
 
@@ -21,7 +22,11 @@ import './navbar.css'
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
-export default function MainNavbar() {
+function MainNavbar() {
+  const theme = useMantineTheme()
+  const [opened, setOpened] = useState(false)
+
+  /* Dynamic changes*/
   const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
   const [widthLogoHeader, setWidthLogoHeader] = useState('18.75rem')
   const [widthSideBar, setWidthSideBar] = useState('18rem')
@@ -67,14 +72,13 @@ export default function MainNavbar() {
     handleResize()
 
     window.addEventListener('resize', handleResize)
+    window.addEventListener('load', handleResize)
 
     return () => {
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('load', handleResize)
     }
   }, [])
-
-  const theme = useMantineTheme()
-  const [opened, setOpened] = useState(false)
 
   const handleSidebarMouseOver = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
@@ -93,6 +97,8 @@ export default function MainNavbar() {
       setWidthSideBar('85%')
     }
   }
+
+  console.log('pollo: ')
 
   return (
     <AppShell
@@ -120,6 +126,7 @@ export default function MainNavbar() {
             <div className='d-inline-flex p-2'>
               <SearchSide />
             </div>
+            <SideMenu />
           </Navbar>
         </div>
       }
@@ -177,8 +184,10 @@ export default function MainNavbar() {
         </Header>
       }>
       <div className='content' style={{ marginLeft: marginLeftContent }}>
-        <Text>Resize app to see responsive navbar in action</Text>
+        <Text>*sono la home*</Text>
       </div>
     </AppShell>
   )
 }
+
+export default MainNavbar

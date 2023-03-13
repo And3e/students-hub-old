@@ -31,11 +31,12 @@ function SearchHeader() {
       }
       setOpacitySearchHeader('0')
       setDisplaySearchHeader('none')
+      setWidthSearchHeader('95%')
     } else {
       setOpacitySearchHeader('1')
       setDisplaySearchHeader('flex')
+      setWidthSearchHeader('74%')
     }
-    setWidthSearchHeader('74%')
   }
 
   const handleKeyPress = (event) => {
