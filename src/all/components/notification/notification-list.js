@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import SwipeToDelete from 'react-swipe-to-delete-ios'
+
 import Notification from './notification'
+import SeeOtherBtn from './see-other.js'
 
 const NotificationList = () => {
   const [notifications, setNotifications] = useState([
@@ -22,6 +24,12 @@ const NotificationList = () => {
       date: '10/03, 00:06',
       content: 'Questa è la meno recente',
     },
+    {
+      id: 4,
+      title: 'Notifica 4',
+      date: '10/03, 00:06',
+      content: 'Questa è una notifica in più',
+    },
   ])
 
   const handleDelete = (id) => {
@@ -31,9 +39,12 @@ const NotificationList = () => {
     setNotifications(newNotifications)
   }
 
+  const showButton = notifications.length > 3
+  const firstThreeNotifications = notifications.slice(0, 3)
+
   return (
     <div>
-      {notifications.map((notification) => (
+      {firstThreeNotifications.map((notification) => (
         <SwipeToDelete
           key={notification.id}
           height={80}
@@ -49,6 +60,7 @@ const NotificationList = () => {
           </div>
         </SwipeToDelete>
       ))}
+      {showButton && <SeeOtherBtn />}
     </div>
   )
 }

@@ -1,0 +1,66 @@
+.other-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dots-container {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0px 2.5px 0 2.5px;
+  border-radius: 50%;
+  background-color: #0094ed;
+  animation: bounce 0.3s alternate ease-in-out;
+  animation: all 0.5s ease-in-out;
+  display: inline-block;
+  position: relative;
+}
+
+.dots-container:hover > .dot {
+  position: relative;
+  animation: bounce 1s infinite forwards;
+  animation-fill-mode: forwards;
+}
+
+.dots-container .dot:nth-child(1) {
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
+
+.dots-container .dot:nth-child(2) {
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.dots-container .dot:nth-child(3) {
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.other-text {
+  text-align: center;
+}

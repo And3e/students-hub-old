@@ -4,6 +4,8 @@ import { Text } from '@mantine/core'
 const Notification = ({ title, date, content }) => {
   const [isHovered, setIsHovered] = useState(false)
 
+  // TO DO → link notifica (backend)
+
   return (
     <div
       style={{
@@ -24,9 +26,11 @@ const Notification = ({ title, date, content }) => {
           width: '90%',
         }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Text weight={700} size='sm'>
-            {title}
-          </Text>
+          <a href='/' className='notification-title-link'>
+            <Text weight={700} size='sm'>
+              {title}
+            </Text>
+          </a>
           <Text weight={700} size='sm'>
             {date}
           </Text>

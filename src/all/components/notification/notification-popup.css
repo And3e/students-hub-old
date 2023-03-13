@@ -25,3 +25,16 @@
   border-radius: 15px;
   padding: 16px 0px 16px 0px;
 }
+
+.notification-title-link:link,
+.notification-title-link:visited {
+  text-decoration: none;
+  color: inherit;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.notification-title-link:hover,
+.notification-title-link:active {
+  text-decoration: none;
+}
