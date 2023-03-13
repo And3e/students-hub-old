@@ -22,35 +22,46 @@ import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
 export default function MainNavbar() {
+  const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
+  const [widthLogoHeader, setWidthLogoHeader] = useState('18.75rem')
+  const [widthSideBar, setWidthSideBar] = useState('18rem')
+  const [displayHeaderShortLogo, setDisplayHeaderShortLogo] = useState('none')
+  const [transformHeaderShortLogo, setTransformHeaderShortLogo] = useState('')
+  const [displayHeaderSupportChild, setDisplayHeaderSupportChild] =
+    useState('none')
+  const [marginLeftContent, setMarginLeftContent] = useState('')
+  const [widthHeaderSubContainer, setWidthHeaderSubContainer] = useState('')
+
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth >= 1200) {
-        document.querySelector('.logo-header').style.width = '18.75rem'
-        document.querySelector('.side-bar').style.width = '18rem'
-        document.querySelector('.header-short-logo').style.display = 'none'
-        document.querySelector('.logo-header').style.display = 'initial'
-        document.querySelector('.header-support-child').style.display = 'none'
+        setDisplayLogoHeader('initial')
+        setWidthLogoHeader('18.75rem')
+        setWidthSideBar('18rem')
+        setDisplayHeaderShortLogo('none')
+        setDisplayHeaderSupportChild('none')
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-        document.querySelector('.logo-header').style.width = '12.5rem'
-        document.querySelector('.side-bar').style.width = '3rem'
-        document.querySelector('.header-short-logo').style.display = 'none'
-        document.querySelector('.logo-header').style.display = 'initial'
-        document.querySelector('.header-support-child').style.display = 'none'
+        setDisplayLogoHeader('initial')
+        setWidthLogoHeader('12.5rem')
+        setWidthSideBar('3rem')
+        setDisplayHeaderShortLogo('none')
+        setDisplayHeaderSupportChild('none')
       } else {
-        document.querySelector('.side-bar').style.width = '85%'
-        document.querySelector('.header-short-logo').style.display = 'initial'
-        document.querySelector('.logo-header').style.display = 'none'
-        document.querySelector('.header-support-child').style.display =
-          'initial'
-        document.querySelector('.header-short-logo').style.transform =
+        setDisplayLogoHeader('none')
+        setWidthSideBar('85%')
+        setDisplayHeaderShortLogo('initial')
+        setDisplayHeaderSupportChild('initial')
+        setTransformHeaderShortLogo(
           'translateX(-' +
-          document.querySelector('.mantine-Burger-root').offsetWidth / 2 +
-          'px)'
+            document.querySelector('.mantine-Burger-root').offsetWidth / 2 +
+            'px)'
+        )
       }
-      document.querySelector('.header-sub-container').style.width =
+      setWidthHeaderSubContainer(
         document.querySelector('.header-container').offsetWidth -
-        document.querySelector('.logo-header').offsetWidth +
-        'px'
+          document.querySelector('.logo-header').offsetWidth +
+          'px'
+      )
     }
 
     handleResize()
@@ -67,19 +78,19 @@ export default function MainNavbar() {
 
   const handleSidebarMouseOver = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-      document.querySelector('.side-bar').style.width = '13rem'
-      document.querySelector('.content').style.marginLeft = '8rem'
+      setWidthSideBar('13rem')
+      setMarginLeftContent('8rem')
     } else if (window.innerWidth < 767) {
-      document.querySelector('.side-bar').style.width = '85%'
+      setWidthSideBar('85%')
     }
   }
 
   const handleSidebarMouseOut = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-      document.querySelector('.side-bar').style.width = '3rem'
-      document.querySelector('.content').style.marginLeft = ''
+      setWidthSideBar('3rem')
+      setMarginLeftContent('')
     } else if (window.innerWidth < 767) {
-      document.querySelector('.side-bar').style.width = '85%'
+      setWidthSideBar('85%')
     }
   }
 
@@ -104,7 +115,8 @@ export default function MainNavbar() {
             hiddenBreakpoint='sm'
             hidden={!opened}
             width={{ sm: 80, lg: 300 }}
-            className='side-bar'>
+            className='side-bar'
+            style={{ width: widthSideBar }}>
             <div className='d-inline-flex p-2'>
               <SearchSide />
             </div>
@@ -127,7 +139,9 @@ export default function MainNavbar() {
               />
             </MediaQuery>
 
-            <div className='logo-header'>
+            <div
+              className='logo-header'
+              style={{ display: displayLogoHeader, width: widthLogoHeader }}>
               <a href='/'>
                 <img
                   src={logo_scritta}
@@ -137,9 +151,15 @@ export default function MainNavbar() {
                 />
               </a>
             </div>
-            <div className='header-sub-container'>
-              <div className='header-support-child' />
-              <div className='header-short-logo'>
+            <div
+              className='header-sub-container'
+              style={{ width: widthHeaderSubContainer }}>
+              <div style={{ display: displayHeaderSupportChild }} />
+              <div
+                style={{
+                  display: displayHeaderShortLogo,
+                  transform: transformHeaderShortLogo,
+                }}>
                 <a href='/'>
                   <img
                     src={logo}
@@ -156,7 +176,7 @@ export default function MainNavbar() {
           </div>
         </Header>
       }>
-      <div className='content'>
+      <div className='content' style={{ marginLeft: marginLeftContent }}>
         <Text>Resize app to see responsive navbar in action</Text>
       </div>
     </AppShell>
