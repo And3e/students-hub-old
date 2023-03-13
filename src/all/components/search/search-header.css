@@ -16,6 +16,7 @@
 
 .input-container {
   width: 75%;
+  transform: translateX(-10px);
 }
 
 .search-input {
