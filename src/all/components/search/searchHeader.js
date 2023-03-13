@@ -1,43 +1,46 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Search } from 'react-bootstrap-icons'
-
 import './search-header.css'
 
-function SearchHeader(inHeader) {
+function SearchHeader() {
   const [isExpanded, setIsExpanded] = useState(false)
   const inputRef = useRef(null)
+  const [displaySearchHeaderContainer, setDisplaySearchHeaderContainer] =
+    useState('initial')
+  const [displaySearchHeader, setDisplaySearchHeader] = useState('flex')
+  const [opacitySearchHeader, setOpacitySearchHeader] = useState('1')
+  const [widthSearchHeader, setWidthSearchHeader] = useState('95%')
 
-  function onFocus() {
+  const onFocus = () => {
     setIsExpanded(true)
     inputRef.current.focus()
-    document.querySelector('.input-container').style.width = '95%'
-    document.querySelector('.shortcut-box').style.opacity = '0'
-    document.querySelector('.shortcut-box').style.display = 'none'
+    setWidthSearchHeader('95%')
+    setOpacitySearchHeader('0')
+    setDisplaySearchHeader('none')
   }
 
-  function handleClick() {
+  const handleClick = () => {
     onFocus()
   }
 
-  function handleBlur() {
+  const handleBlur = () => {
     const windowWidth = window.innerWidth
     if (windowWidth > 767 && windowWidth <= 1200) {
       if (inputRef.current.value.trim() === '') {
         setIsExpanded(false)
       }
-      document.querySelector('.shortcut-box').style.opacity = '0'
-      document.querySelector('.shortcut-box').style.display = 'none'
+      setOpacitySearchHeader('0')
+      setDisplaySearchHeader('none')
     } else {
-      document.querySelector('.shortcut-box').style.opacity = '1'
-      document.querySelector('.shortcut-box').style.display = 'flex'
+      setOpacitySearchHeader('1')
+      setDisplaySearchHeader('flex')
     }
-    document.querySelector('.input-container').style.width = '75%'
+    setWidthSearchHeader('74%')
   }
 
-  function handleKeyPress(event) {
+  const handleKeyPress = (event) => {
     const windowWidth = window.innerWidth
     if (event.key === 'Enter') {
-      // Submit search request here
       console.log('Submitting search request for:', inputRef.current.value)
     }
     if (event.key === 'Escape') {
@@ -46,9 +49,9 @@ function SearchHeader(inHeader) {
       } else {
         setIsExpanded(true)
         inputRef.current.blur()
-        document.querySelector('.input-container').style.width = '75%'
-        document.querySelector('.shortcut-box').style.opacity = '1'
-        document.querySelector('.shortcut-box').style.display = 'flex'
+        setWidthSearchHeader('74%')
+        setOpacitySearchHeader('1')
+        setDisplaySearchHeader('flex')
       }
     }
   }
@@ -58,16 +61,6 @@ function SearchHeader(inHeader) {
       onFocus()
     }
   }, [])
-
-  const handleShortcutOver = () => {
-    document.querySelector('.shortcut-box').style.opacity = '0'
-    document.querySelector('.shortcut-box').style.display = 'none'
-  }
-
-  const handleShortcutLeave = () => {
-    document.querySelector('.shortcut-box').style.opacity = '1'
-    document.querySelector('.shortcut-box').style.display = 'flex'
-  }
 
   useEffect(() => {
     function handleResize() {
@@ -79,15 +72,15 @@ function SearchHeader(inHeader) {
       }
 
       if (windowWidth < 1200) {
-        document.querySelector('.shortcut-box').style.display = 'none'
+        setDisplaySearchHeader('none')
       } else {
-        document.querySelector('.shortcut-box').style.display = 'flex'
+        setDisplaySearchHeader('flex')
       }
 
-      if (inHeader && windowWidth < 767) {
-        document.querySelector('.search-container').style.display = 'none'
+      if (windowWidth < 767) {
+        setDisplaySearchHeaderContainer('none')
       } else {
-        document.querySelector('.search-container').style.display = 'initial'
+        setDisplaySearchHeaderContainer('initial')
       }
     }
 
@@ -96,7 +89,7 @@ function SearchHeader(inHeader) {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [inHeader])
+  }, [])
 
   useEffect(() => {
     window.addEventListener('keydown', handleShortcut)
@@ -106,18 +99,22 @@ function SearchHeader(inHeader) {
   }, [handleShortcut])
 
   return (
-    <div className='search-container'>
+    <div
+      className='search-container'
+      style={{ display: displaySearchHeaderContainer }}>
       <div
         className={`search-box ${isExpanded ? 'expanded' : ''}`}
         onClick={handleClick}>
         <Search className='search-icon' />
         <div
           className='shortcut-box'
-          onMouseOver={handleShortcutOver}
-          onMouseLeave={handleShortcutLeave}>
+          style={{
+            display: displaySearchHeader,
+            opacity: opacitySearchHeader,
+          }}>
           Alt + S
         </div>
-        <div className='input-container'>
+        <div className='input-container' style={{ width: widthSearchHeader }}>
           <input
             type='search'
             placeholder='Cerca qualcosa...'

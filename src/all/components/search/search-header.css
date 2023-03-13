@@ -15,7 +15,7 @@
 }
 
 .input-container {
-  width: 75%;
+  width: 95%;
   transform: translateX(-10px);
 }
 
@@ -58,6 +58,7 @@
 }
 
 .shortcut-box {
+  user-select: none;
   position: absolute;
   top: 50%;
   right: 5px;

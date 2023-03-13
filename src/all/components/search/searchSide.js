@@ -8,6 +8,7 @@ import './search-side.css'
 function SearchSide() {
   const input = useRef(null)
   const [isClicked, setIsClicked] = useState(false)
+  const [displaySearchSide, setDisplaySearchSide] = useState('initial')
 
   function handleClick() {
     setIsClicked(true)
@@ -18,10 +19,9 @@ function SearchSide() {
       const windowWidth = window.innerWidth
 
       if (windowWidth < 767) {
-        document.querySelector('.side-search-container').style.display =
-          'initial'
+        setDisplaySearchSide('initial')
       } else {
-        document.querySelector('.side-search-container').style.display = 'none'
+        setDisplaySearchSide('none')
       }
     }
 
@@ -34,7 +34,9 @@ function SearchSide() {
   }, [])
 
   return (
-    <div className='side-search-container'>
+    <div
+      className='side-search-container'
+      style={{ display: displaySearchSide }}>
       <Form className='d-flex'>
         <div>
           <button
