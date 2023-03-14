@@ -34,7 +34,6 @@ function MainNavbar() {
   const [transformHeaderShortLogo, setTransformHeaderShortLogo] = useState('')
   const [displayHeaderSupportChild, setDisplayHeaderSupportChild] =
     useState('none')
-  const [marginLeftContent, setMarginLeftContent] = useState('')
   const [widthHeaderSubContainer, setWidthHeaderSubContainer] = useState('')
 
   useEffect(() => {
@@ -89,22 +88,16 @@ function MainNavbar() {
   }, [])
 
   const handleSidebarMouseOver = () => {
-    if (window.innerWidth >= 1200) {
-      setMarginLeftContent('8rem')
-    } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
+    if (window.innerWidth >= 767 && window.innerWidth < 1200) {
       setWidthSideBar('13rem')
-      setMarginLeftContent('')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
   }
 
   const handleSidebarMouseOut = () => {
-    if (window.innerWidth >= 1200) {
-      setMarginLeftContent('8rem')
-    } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
+    if (window.innerWidth >= 767 && window.innerWidth < 1200) {
       setWidthSideBar('3rem')
-      setMarginLeftContent('')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
@@ -193,8 +186,8 @@ function MainNavbar() {
           </div>
         </Header>
       }>
-      <div className='content' style={{ marginLeft: marginLeftContent }}>
-        <Text style={{ marginTop: '500px' }}>*sono la home*ssssss</Text>
+      <div className='content'>
+        <Text style={{ marginTop: '500px' }}>*sono la home* aaaaaa</Text>
       </div>
     </AppShell>
   )
