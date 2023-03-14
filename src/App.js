@@ -3,7 +3,8 @@ import MainNavbar from './all/navbar.js'
 function App() {
   return (
     <>
-      <MainNavbar></MainNavbar>
+      <MainNavbar>
+      </MainNavbar>
     </>
   )
 }
