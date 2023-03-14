@@ -89,16 +89,20 @@ function MainNavbar() {
   }, [])
 
   const handleSidebarMouseOver = () => {
-    if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-      setWidthSideBar('13rem')
+    if (window.innerWidth >= 1200) {
       setMarginLeftContent('8rem')
+    } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
+      setWidthSideBar('13rem')
+      setMarginLeftContent('')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
   }
 
   const handleSidebarMouseOut = () => {
-    if (window.innerWidth >= 767 && window.innerWidth < 1200) {
+    if (window.innerWidth >= 1200) {
+      setMarginLeftContent('8rem')
+    } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
       setWidthSideBar('3rem')
       setMarginLeftContent('')
     } else if (window.innerWidth < 767) {
@@ -190,7 +194,7 @@ function MainNavbar() {
         </Header>
       }>
       <div className='content' style={{ marginLeft: marginLeftContent }}>
-        <Text style={{ marginTop: '1000px' }}>*sono la home</Text>
+        <Text style={{ marginTop: '500px' }}>*sono la home*ssssss</Text>
       </div>
     </AppShell>
   )
