@@ -21,6 +21,14 @@ function SearchHeader() {
 
   const handleClick = () => {
     onFocus()
+
+    // for mobile (keyboard problems)
+    // ms delay supported = 8*50 → 400 ms
+    for (let i = 1; i <= 8; i++) {
+      setTimeout(() => {
+        onFocus()
+      }, i * 50)
+    }
   }
 
   const handleBlur = () => {

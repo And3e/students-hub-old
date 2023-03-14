@@ -55,6 +55,7 @@
 
 .search-box {
   position: relative;
+  touch-action: manipulation;
 }
 
 .shortcut-box {
