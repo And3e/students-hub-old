@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import {
   AppShell,
@@ -25,6 +25,8 @@ import logo_scritta from './../img/logos/logo-scritta-tr.png'
 function MainNavbar() {
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
+  const refHeader = useRef(null)
+  const refSideBar = useRef(null)
 
   /* Dynamic changes*/
   const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
@@ -55,11 +57,12 @@ function MainNavbar() {
         setWidthSideBar('85%')
         setDisplayHeaderShortLogo('initial')
         setDisplayHeaderSupportChild('initial')
-        setTransformHeaderShortLogo(
-          'translateX(-' +
-            document.querySelector('.mantine-Burger-root').offsetWidth / 2 +
-            'px)'
-        )
+        const burgerRoot = document.querySelector('.mantine-Burger-root')
+        if (burgerRoot) {
+          setTransformHeaderShortLogo(
+            'translateX(-' + burgerRoot.offsetWidth / 2 + 'px)'
+          )
+        }
       }
       setTimeout(() => {
         setWidthHeaderSubContainer(
@@ -103,6 +106,25 @@ function MainNavbar() {
     }
   }
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        window.innerWidth < 767 &&
+        opened &&
+        !refHeader.current.contains(event.target) &&
+        !refSideBar.current.contains(event.target)
+      ) {
+        setOpened(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [opened, refHeader, refSideBar])
+
   return (
     <AppShell
       styles={{
@@ -118,7 +140,8 @@ function MainNavbar() {
       navbar={
         <div
           onMouseEnter={handleSidebarMouseOver}
-          onMouseLeave={handleSidebarMouseOut}>
+          onMouseLeave={handleSidebarMouseOut}
+          ref={refSideBar}>
           <Navbar
             p='md'
             hiddenBreakpoint='sm'
@@ -137,7 +160,8 @@ function MainNavbar() {
         <Header
           height={{ base: 50, md: 70 }}
           p='md'
-          className='navbar-container'>
+          className='navbar-container'
+          ref={refHeader}>
           <div className='header-container'>
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger
