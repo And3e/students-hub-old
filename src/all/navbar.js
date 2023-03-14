@@ -62,21 +62,29 @@ function MainNavbar() {
             'px)'
         )
       }
-      setWidthHeaderSubContainer(
-        document.querySelector('.header-container').offsetWidth -
-          document.querySelector('.logo-header').offsetWidth +
-          'px'
-      )
+      setTimeout(() => {
+        setWidthHeaderSubContainer(
+          document.querySelector('.header-container').offsetWidth -
+            document.querySelector('.logo-header').offsetWidth +
+            'px'
+        )
+      }, 1)
     }
 
     handleResize()
 
-    window.addEventListener('resize', handleResize)
     window.addEventListener('load', handleResize)
+    window.addEventListener('orientationchange', handleResize)
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleResize)
+    window.addEventListener('DOMContentLoaded', handleResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
       window.removeEventListener('load', handleResize)
+      window.removeEventListener('orientationchange', handleResize)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleResize)
+      window.removeEventListener('DOMContentLoaded', handleResize)
     }
   }, [])
 
@@ -97,8 +105,6 @@ function MainNavbar() {
       setWidthSideBar('85%')
     }
   }
-
-  console.log('pollo: ')
 
   return (
     <AppShell
@@ -184,7 +190,7 @@ function MainNavbar() {
         </Header>
       }>
       <div className='content' style={{ marginLeft: marginLeftContent }}>
-        <Text>*sono la home*</Text>
+        <Text style={{ marginTop: '1000px' }}>*sono la home</Text>
       </div>
     </AppShell>
   )
