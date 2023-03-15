@@ -1,0 +1,49 @@
+.icons-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.icons-container:hover {
+  background-color: #f7f7f7;
+}
+
+.menu-button {
+  width: 42px;
+  heigth: 42px;
+  border: 0;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.icon-text,
+.icon-text h5 {
+  margin: 0;
+  margin-left: 0.5vw;
+  display: inline-block;
+  color: #212529;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  text-transform: capitalize;
+}
+
+.icons-container a:link,
+.icons-container a:visited {
+  text-decoration: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.icons-container a:hover,
+.icons-container a:active {
+  text-decoration: none;
+}
+
+.icons-container a {
+  color: #0094de;
+}

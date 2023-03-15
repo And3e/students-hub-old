@@ -13,15 +13,14 @@ import NotificationList from './notification-list.js'
 
 const NotificationPopUp = forwardRef((props, ref) => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false)
-  const [backgroundColor, setBackgroundColor] = useState('#0094ed')
-  const [shouldDisplay, setShouldDisplay] = useState(false)
+  const [displayPopup, setDisplayPopup] = useState(false)
 
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth >= 767) {
-        setShouldDisplay(true)
+        setDisplayPopup(true)
       } else {
-        setShouldDisplay(false)
+        setDisplayPopup(false)
       }
     }
 
@@ -69,27 +68,14 @@ const NotificationPopUp = forwardRef((props, ref) => {
     }
   }
 
-  // :hover effect
-  const handleMouseOver = () => {
-    setBackgroundColor('#1c7ed6')
-  }
-
-  const handleMouseOut = () => {
-    setBackgroundColor('#0094ed')
-  }
-
-  if (!shouldDisplay) {
+  if (!displayPopup) {
     return null
   }
 
   return (
     <Popover ref={ref} width={350} position='bottom' withArrow shadow='md'>
       <Popover.Target>
-        <Button
-          className='rounded-btn'
-          style={{ backgroundColor }}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}>
+        <Button className='rounded-btn btn-color'>
           <div className='icon-resizer'>
             <BellFill className='bell-icon' />
           </div>

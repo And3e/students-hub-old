@@ -1,0 +1,31 @@
+.side-menu-container {
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  transform: translateX(-0.3vw);
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menu-up,
+.menu-down {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 1vw;
+}
+
+.menu-up {
+  margin-bottom: 1vw;
+}
+
+.menu-down {
+  padding-bottom: 1.8vw;
+}

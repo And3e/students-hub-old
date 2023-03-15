@@ -26,7 +26,7 @@ function SeeOtherBtn() {
             <div
               style={{
                 transition: 'background-color 0.3s',
-                backgroundColor: isHovered ? '#f0f0f0' : 'transparent',
+                backgroundColor: isHovered ? '#f7f8f9' : 'transparent',
               }}
               className='dots-container'
               onMouseEnter={handleEnter}

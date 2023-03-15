@@ -22,7 +22,7 @@ import './navbar.css'
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
-function MainNavbar() {
+function MainNavbar(props) {
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
   const refHeader = useRef(null)
@@ -43,13 +43,13 @@ function MainNavbar() {
       if (window.innerWidth >= 1200) {
         setDisplayLogoHeader('initial')
         setWidthLogoHeader('18.75rem')
-        setWidthSideBar('18rem')
+        setWidthSideBar('15rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         setDisplayLogoHeader('initial')
         setWidthLogoHeader('12.5rem')
-        setWidthSideBar('3rem')
+        setWidthSideBar('2rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
       } else {
@@ -92,7 +92,7 @@ function MainNavbar() {
 
   const handleSidebarMouseOver = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-      setWidthSideBar('13rem')
+      setWidthSideBar('12rem')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
@@ -100,7 +100,7 @@ function MainNavbar() {
 
   const handleSidebarMouseOut = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
-      setWidthSideBar('3rem')
+      setWidthSideBar('2rem')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
@@ -114,7 +114,6 @@ function MainNavbar() {
         !refHeader.current.contains(event.target) &&
         !refSideBar.current.contains(event.target)
       ) {
-        setOpened(false)
       }
     }
 
@@ -146,13 +145,11 @@ function MainNavbar() {
             p='md'
             hiddenBreakpoint='sm'
             hidden={!opened}
-            width={{ sm: 80, lg: 300 }}
+            width={{ sm: 60, lg: 200 }}
             className='side-bar'
-            style={{ width: widthSideBar }}>
-            <div className='d-inline-flex p-2'>
-              <SearchSide />
-            </div>
-            <SideMenu />
+            style={{ width: widthSideBar, overflowY: 'auto' }}>
+            <SearchSide />
+            <SideMenu pagName={props.pagName} isSBExpanded={widthSideBar} />
           </Navbar>
         </div>
       }
@@ -179,7 +176,7 @@ function MainNavbar() {
               <a href='/'>
                 <img
                   src={logo_scritta}
-                  height='30'
+                  height='35'
                   className='d-inline-block align-center'
                   alt='Students Hub logo long'
                 />
