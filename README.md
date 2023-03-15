@@ -1,7 +1,9 @@
 # Students Hub 🎒
 
 🇬🇧\
-A dynamic website built with React and Bootstrap. Here scholars can be both students both teachers!
+A dynamic website built with React, Mantine and Bootstrap.
+This site is essentially a `repetition site`, but not a common one! 
+Thanks to `Students Hub` you can **give** and **receive** _tutorials_ ✒️, earn _credits_ 🪙, browse the _resources_ 📒 shared by the **community** 👨‍🎓👩‍🎓 and much more! Let's make learning more enjoyable, let's do it together!
 
 ## Authors 👥
 
@@ -33,8 +35,8 @@ In case of any **errors** go here: [`https://facebook.github.io/create-react-app
 # Students Hub 🎒
 
 🇮🇹\
-Un sito web dinamico costruito con React e Bootstrap. Qui i borsisti possono essere sia studenti che insegnanti!
-
+Un sito web dinamico costruito con React, Mantine e Bootstrap. Questo sito è essenzialmente un `sito per ripetizioni`, ma non uno qualsiasi!
+Grazie a `Students Hub` è possibile **dare** e **ricevere** _ripetizioni_ ✒️, guadagnare _crediti_ 🪙, consultare le _risorse_ 📒 condivise dalla **community** 👨‍🎓👩‍🎓 e molto altro! Rendiamo l'apprendimento più piacevole, facciamolo insieme!
 ## Autori 👥
 
 ⭐ Leone Lorenzo\
