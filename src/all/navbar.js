@@ -8,11 +8,13 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
+  Space,
 } from '@mantine/core'
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Carousel from '../home/carousel';
+import Carousel from '../home/carousel'
+import Post from '../home/post'
 
 import './navbar.css'
 
@@ -150,6 +152,13 @@ export default function MainNavbar() {
       }>
       <div className='content'>
         <Carousel />
+        <Space h="md" />
+        
+        <div>
+        {/* <div className="post-container"> */}
+        <Post />
+
+        </div>
       </div>
     </AppShell>
   )

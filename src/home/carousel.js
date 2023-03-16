@@ -1,5 +1,5 @@
 import { Carousel } from '@mantine/carousel';
-import { createStyles, Paper, Text, Title, Button, rem,Badge } from '@mantine/core';
+import { createStyles, Paper, Text, Title, Button, rem } from '@mantine/core';
 import Autoplay from 'embla-carousel-autoplay';
 import { useRef } from 'react';
 
