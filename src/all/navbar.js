@@ -12,7 +12,7 @@ import {
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import Carousel from '../home/carousel'
+import Carousel from '../home/carousel';
 
 import './navbar.css'
 
