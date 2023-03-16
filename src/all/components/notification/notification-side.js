@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '@mantine/core'
 import { BellFill } from 'react-bootstrap-icons'
 import './notification-side.css'
@@ -38,7 +39,7 @@ function NotificationSide() {
   }
 
   return (
-    <a href='/'>
+    <Link to='/notifications'>
       <Button
         className='rounded-btn-side'
         style={{ backgroundColor }}
@@ -48,7 +49,7 @@ function NotificationSide() {
           <BellFill className='bell-icon-side' />
         </div>
       </Button>
-    </a>
+    </Link>
   )
 }
 

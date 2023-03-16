@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   AppShell,
@@ -18,7 +19,7 @@ import NotificationSide from './components/notification/notification-side.js'
 
 import './navbar.css'
 
-/* imgs */
+// imgs
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
@@ -28,7 +29,7 @@ function MainNavbar(props) {
   const refHeader = useRef(null)
   const refSideBar = useRef(null)
 
-  /* Dynamic changes*/
+  // Dynamic changes
   const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
   const [widthLogoHeader, setWidthLogoHeader] = useState('18.75rem')
   const [widthSideBar, setWidthSideBar] = useState('18rem')
@@ -173,14 +174,14 @@ function MainNavbar(props) {
             <div
               className='logo-header'
               style={{ display: displayLogoHeader, width: widthLogoHeader }}>
-              <a href='/'>
+              <Link to='/dashboard'>
                 <img
                   src={logo_scritta}
                   height='35'
                   className='d-inline-block align-center'
                   alt='Students Hub logo long'
                 />
-              </a>
+              </Link>
             </div>
             <div
               className='header-sub-container'
@@ -191,14 +192,14 @@ function MainNavbar(props) {
                   display: displayHeaderShortLogo,
                   transform: transformHeaderShortLogo,
                 }}>
-                <a href='/'>
+                <Link to='/dashboard'>
                   <img
                     src={logo}
                     height='40'
                     className='d-inline-block align-center'
                     alt='Students Hub logo'
                   />
-                </a>
+                </Link>
               </div>
               <SearchHeader />
               <NotificationPopUp />

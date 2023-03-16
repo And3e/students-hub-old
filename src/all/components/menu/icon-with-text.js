@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import './icon-with-text.css'
 
@@ -36,14 +37,14 @@ function IconWithText(props) {
         backgroundColor: props.isActive ? '#e0e0e0' : '',
       }}>
       <div className='menu-button'>
-        <a href={props.link}>
+        <Link to={props.link}>
           <Icon size={props.size} className='mr-3' />
-        </a>
+        </Link>
       </div>
       <div className='icon-text' style={{ display: displaySideBarText }}>
-        <a href={props.link}>
+        <Link to={props.link}>
           <h5>{props.title}</h5>
-        </a>
+        </Link>
       </div>
     </div>
   )

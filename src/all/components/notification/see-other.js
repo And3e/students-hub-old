@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDisclosure } from '@mantine/hooks'
 import { Popover, Text } from '@mantine/core'
+import { Link } from 'react-router-dom'
 
 import './see-other.css'
 
@@ -21,7 +22,7 @@ function SeeOtherBtn() {
   return (
     <Popover width={100} position='top' withArrow shadow='md' opened={opened}>
       <Popover.Target>
-        <a href='/'>
+        <Link to='/notifications'>
           <div className='other-container'>
             <div
               style={{
@@ -48,7 +49,7 @@ function SeeOtherBtn() {
                 }}></span>
             </div>
           </div>
-        </a>
+        </Link>
       </Popover.Target>
       <Popover.Dropdown sx={{ pointerEvents: 'none' }}>
         <Text size='sm' className='other-text'>

@@ -1,15 +1,30 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import MainNavbar from './all/navbar.js'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
+
 import './index.css'
-import Bacheca from './pages/bacheca.js'
+
+// Navbar
+import MainNavbar from './all/navbar.js'
+
+// Components
+
+// <Route path="*" element={<NoMatch />} />
 
 function App() {
   return (
     <Router>
-      <MainNavbar />
       <Routes>
-        <Route path='/dashboard' component={<Bacheca />} exact />
+        <Route path='/' element={<Navigate to='/dashboard' />} />
+        <Route
+          path='/dashboard'
+          element={<MainNavbar pagName='/dashboard' />}
+          exact
+        />
       </Routes>
     </Router>
   )
