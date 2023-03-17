@@ -10,7 +10,6 @@ import './index.css'
 
 // Navbar
 import MainNavbar from './all/navbar.js'
-
 // Components
 
 // <Route path="*" element={<NoMatch />} />
@@ -25,6 +24,7 @@ function App() {
           element={<MainNavbar pagName='/dashboard' />}
           exact
         />
+        <Route path='/admin' element={<div>Admin</div>} exact />
       </Routes>
     </Router>
   )

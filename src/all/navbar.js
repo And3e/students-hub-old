@@ -14,6 +14,8 @@ import {
 import SearchHeader from './components/search/searchHeader.js'
 import SearchSide from './components/search/searchSide.js'
 import SideMenu from './components/menu/side-menu.js'
+import Demo from './components/menu/side-menu-test2.js'
+
 import NotificationPopUp from './components/notification/notification-popup.js'
 import NotificationSide from './components/notification/notification-side.js'
 
@@ -28,6 +30,7 @@ function MainNavbar(props) {
   const [opened, setOpened] = useState(false)
   const refHeader = useRef(null)
   const refSideBar = useRef(null)
+  const refSBNavbar = useRef(null)
 
   // Dynamic changes
   const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
@@ -38,6 +41,7 @@ function MainNavbar(props) {
   const [displayHeaderSupportChild, setDisplayHeaderSupportChild] =
     useState('none')
   const [widthHeaderSubContainer, setWidthHeaderSubContainer] = useState('')
+  const [marginLeftContent, setMarginLeftContent] = useState('')
 
   useEffect(() => {
     function handleResize() {
@@ -47,17 +51,20 @@ function MainNavbar(props) {
         setWidthSideBar('15rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
+        setMarginLeftContent('2rem')
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         setDisplayLogoHeader('initial')
         setWidthLogoHeader('12.5rem')
         setWidthSideBar('2rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
+        setMarginLeftContent('0')
       } else {
         setDisplayLogoHeader('none')
         setWidthSideBar('85%')
         setDisplayHeaderShortLogo('initial')
         setDisplayHeaderSupportChild('initial')
+        setMarginLeftContent('0')
         const burgerRoot = document.querySelector('.mantine-Burger-root')
         if (burgerRoot) {
           setTransformHeaderShortLogo(
@@ -115,6 +122,7 @@ function MainNavbar(props) {
         !refHeader.current.contains(event.target) &&
         !refSideBar.current.contains(event.target)
       ) {
+        setOpened(false)
       }
     }
 
@@ -148,9 +156,10 @@ function MainNavbar(props) {
             hidden={!opened}
             width={{ sm: 60, lg: 200 }}
             className='side-bar'
-            style={{ width: widthSideBar, overflowY: 'auto' }}>
+            style={{ width: widthSideBar }}
+            ref={refSBNavbar}>
             <SearchSide />
-            <SideMenu pagName={props.pagName} isSBExpanded={widthSideBar} />
+            <Demo isSBExpanded={widthSideBar} refSB={refSBNavbar} />
           </Navbar>
         </div>
       }
@@ -208,7 +217,7 @@ function MainNavbar(props) {
           </div>
         </Header>
       }>
-      <div className='content'>
+      <div className='content' style={{ marginLeft: marginLeftContent }}>
         <Text style={{ marginTop: '500px' }}>*sono la home* aaaaaa</Text>
       </div>
     </AppShell>

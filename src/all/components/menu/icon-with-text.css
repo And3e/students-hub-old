@@ -26,10 +26,15 @@
   margin-left: 0.5vw;
   display: inline-block;
   color: #212529;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   text-transform: capitalize;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  -webkit-tap-highlight-color: transparent;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  text-decoration: none;
 }
 
 .icons-container a:link,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import IconWithText from './icon-with-text.js'
 import {
   CardHeading,
@@ -13,6 +13,9 @@ import {
 import './side-menu.css'
 
 function SideMenu(props) {
+  const [heigthSideMenu, setHeigthSideMenu] = useState('100%')
+  const [marginTopSideMenu, setMarginTopSideMenu] = useState('0')
+
   const menuUp = [
     {
       title: 'bacheca',
@@ -61,10 +64,50 @@ function SideMenu(props) {
     },
   ]
 
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 767) {
+        setHeigthSideMenu('90%')
+        setMarginTopSideMenu('4%')
+      } else {
+        setHeigthSideMenu('100%')
+        setMarginTopSideMenu('0')
+      }
+
+      setTimeout(() => {
+        if (window.innerWidth < 767) {
+          setHeigthSideMenu('90%')
+          setMarginTopSideMenu('4%')
+        } else {
+          setHeigthSideMenu('100%')
+          setMarginTopSideMenu('0')
+        }
+      }, 10)
+    }
+
+    handleResize()
+
+    window.addEventListener('load', handleResize)
+    window.addEventListener('orientationchange', handleResize)
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleResize)
+    window.addEventListener('DOMContentLoaded', handleResize)
+
+    return () => {
+      window.removeEventListener('load', handleResize)
+      window.removeEventListener('orientationchange', handleResize)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleResize)
+      window.removeEventListener('DOMContentLoaded', handleResize)
+    }
+  }, [])
+
   const isSBEx = props.isSBExpanded !== '2rem'
 
   return (
-    <div className='side-menu-container'>
+    <div
+      className='side-menu-container'
+      style={{ height: heigthSideMenu, marginTop: marginTopSideMenu }}>
       <div className='menu-container'>
         <div className='menu-up'>
           {menuUp.map((out, index) => (
