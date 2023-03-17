@@ -1,0 +1,63 @@
+.side-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-up,
+.menu-down {
+  display: grid;
+  margin-left: 11.21px;
+  justify-content: left;
+  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1vw;
+  cursor: pointer;
+}
+
+.menu-up a:link,
+.menu-up a:visited,
+.menu-down a:link,
+.menu-down a:visited {
+  text-decoration: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.menu-up a:hover,
+.menu-up a:active,
+.menu-down a:hover,
+.menu-down a:active {
+  text-decoration: none;
+}
+
+.menu-up {
+  padding-top: 1vw;
+}
+
+.menu-down {
+  padding-bottom: 1vw;
+}
+
+.menu-element {
+  border-radius: 5px;
+  display: flex;
+  vertical-align: center;
+  height: 37.7px;
+}
+
+.mantine-1l4mhad {
+  transition: all 0.2s ease-in-out;
+  margin-right: 0;
+}
+
+.mantine-dstkpx {
+  line-height: 0;
+  text-transform: capitalize;
+}
