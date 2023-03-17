@@ -17,6 +17,8 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@tabler/core": "^1.0.0-beta17",
+    "@tabler/icons": "^2.10.0",
+    "@tabler/icons-react": "^2.10.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
