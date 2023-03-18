@@ -9,12 +9,18 @@ import {
   Burger,
   useMantineTheme,
   Space,
+  Group,
+  Card,
 } from '@mantine/core'
+
+import { Menu, ActionIcon, Image, SimpleGrid, rem } from '@mantine/core';
+import { IconDots, IconEye, IconFileZip, IconTrash } from '@tabler/icons-react';
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Carousel from '../home/carousel'
 import Post from '../home/post'
+
 
 import './navbar.css'
 
@@ -24,6 +30,7 @@ import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
 /* logos */
 import { BellFill } from 'react-bootstrap-icons'
+
 
 export default function MainNavbar() {
   useEffect(() => {
@@ -150,15 +157,32 @@ export default function MainNavbar() {
           </div>
         </Header>
       }>
+
       <div className='content'>
+
         <Carousel />
         <Space h="md" />
-        
-        <div>
-        {/* <div className="post-container"> */}
-        <Post />
+        {/* asssssssssssaaaaaaaaaaaaaaaaaaaaaasaaaa */}
 
-        </div>
+        <Card withBorder shadow="sm" radius="md" >
+          <Card.Section withBorder inheritPadding py="xs">
+            <Group position="apart">
+
+              <Text weight={700}>Bacheca</Text>
+
+            </Group>
+          </Card.Section>
+            <Card.Section mt="sm" pb="md">
+
+            <div className='post-container'>
+              <Post />
+          </div>
+            </Card.Section>
+
+        </Card>
+
+
+
       </div>
     </AppShell>
   )

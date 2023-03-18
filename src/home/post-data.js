@@ -4,11 +4,11 @@ import propic3 from '../img/test-profile-pictures/propic3.jpg'
 
 const data = [
     {
-        name: 'Luiggi',
+        name: 'Luiggi lo spacciatore seriale',
         propic: propic1,
         type: 'Post',
-        title: 'sus',
-        message: 'sososos',
+        title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritat obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil eveniet aliquid culpa officia aut Impedit sit sunt quaerat odit'
     },
     {
         name: 'Giaggi',
@@ -29,6 +29,13 @@ const data = [
         propic: propic3,
         type: 'Ripetizione',
         title: 'Aiuto Matematica',
+        message: 'seseses',
+    },
+    {
+        name: 'MariaLuigia',
+        propic: propic3,
+        type: 'Ripetizione',
+        title: 'ses',
         message: 'seseses',
     },
     {

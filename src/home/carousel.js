@@ -83,18 +83,20 @@ export default function NewsCarousel() {
 
     //Return Carousel
     return (
-        <Carousel
-            loop
-            slideSize="50%"
-            breakpoints={[{ maxWidth: 'md', slideSize: '100%', slideGap: 2 }]}
-            slideGap="xl"
-            align="start"
+        <>
+            <Carousel
+                loop
+                slideSize="50%"
+                breakpoints={[{ maxWidth: 'md', slideSize: '100%', slideGap: 2 }]}
+                slideGap="xl"
+                align="start"
 
-            plugins={[autoplay.current]}
-            onMouseEnter={autoplay.current.stop}
-            onMouseLeave={autoplay.current.reset}
-        >
-            {slides}
-        </Carousel>
+                plugins={[autoplay.current]}
+                onMouseEnter={autoplay.current.stop}
+                onMouseLeave={autoplay.current.reset}
+            >
+                {slides}
+            </Carousel>
+        </>
     );
 }
