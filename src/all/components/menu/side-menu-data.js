@@ -6,17 +6,18 @@ import {
   Star,
   Question,
   Person,
+  Megaphone,
+  Ear,
 } from 'react-bootstrap-icons'
 
 const stroke = '1.5'
-const sizeOpen = '1.1rem'
-const sizeClosed = '1.1rem'
+const size = '1.1rem'
 
 const menu = [
   {
     icon: CardHeading,
     label: 'bacheca',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/dashboard',
     stroke: stroke,
     id: 0,
@@ -24,7 +25,7 @@ const menu = [
   {
     icon: Folder,
     label: 'risorse',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/resources',
     stroke: stroke,
     id: 1,
@@ -32,19 +33,31 @@ const menu = [
   {
     icon: PersonVideo3,
     label: 'ripetizioni',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/lessons',
     stroke: stroke,
     id: 2,
     children: [
-      { label: 'First child link', link: '/dashboard/first-child' },
-      { label: 'Second child link', link: '/dashboard/second-child' },
+      {
+        icon: Megaphone,
+        label: 'Insegnante',
+        size: size,
+        link: '/give',
+        stroke: stroke,
+      },
+      {
+        icon: Ear,
+        label: 'Alunno',
+        size: size,
+        link: '/receive',
+        stroke: stroke,
+      },
     ],
   },
   {
     icon: CalendarDate,
     label: 'calendario',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/calendar',
     stroke: stroke,
     id: 3,
@@ -52,7 +65,7 @@ const menu = [
   {
     icon: Star,
     label: 'crediti',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/credits',
     stroke: stroke,
     id: 4,
@@ -60,7 +73,7 @@ const menu = [
   {
     icon: Question,
     label: 'info',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/info',
     stroke: stroke,
     id: 5,
@@ -68,7 +81,7 @@ const menu = [
   {
     icon: Person,
     label: 'account',
-    size: sizeOpen + ';' + sizeClosed,
+    size: size,
     link: '/account',
     stroke: stroke,
     id: 6,

@@ -25,7 +25,7 @@ import './navbar.css'
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
-function MainNavbar(props) {
+function MainNavbar({ pageID }) {
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
   const refHeader = useRef(null)
@@ -42,6 +42,10 @@ function MainNavbar(props) {
     useState('none')
   const [widthHeaderSubContainer, setWidthHeaderSubContainer] = useState('')
   const [marginLeftContent, setMarginLeftContent] = useState('')
+
+  // SidebBar Menu
+  const [indexSBC, setIndexSBC] = useState()
+  const [isOpenedSBC, setIsOpenedSBC] = useState()
 
   useEffect(() => {
     function handleResize() {
@@ -109,6 +113,10 @@ function MainNavbar(props) {
   const handleSidebarMouseOut = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
       setWidthSideBar('2rem')
+
+      if (isOpenedSBC && document.querySelectorAll('.maybe-child')[indexSBC]) {
+        document.querySelectorAll('.maybe-child')[indexSBC].click()
+      }
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')
     }
@@ -132,6 +140,11 @@ function MainNavbar(props) {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [opened, refHeader, refSideBar])
+
+  const handleChildData = (index, isOpened) => {
+    setIndexSBC(index)
+    setIsOpenedSBC(isOpened)
+  }
 
   return (
     <AppShell
@@ -159,7 +172,11 @@ function MainNavbar(props) {
             style={{ width: widthSideBar }}
             ref={refSBNavbar}>
             <SearchSide />
-            <Demo isSBExpanded={widthSideBar} refSB={refSBNavbar} />
+            <Demo
+              isSBExpanded={widthSideBar}
+              pageID={pageID}
+              onChildData={handleChildData}
+            />
           </Navbar>
         </div>
       }
