@@ -1,5 +1,4 @@
 .side-menu-container {
-  justify-content: left;
   display: flex;
 }
 
@@ -13,7 +12,6 @@
 .menu-up,
 .menu-down {
   display: grid;
-  margin-left: 8.8735px;
   justify-content: left;
   grid-template-columns: 1fr;
   gap: 1vw;

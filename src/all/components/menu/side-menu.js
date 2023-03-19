@@ -12,7 +12,12 @@ function SideMenu(props) {
   const [childOpen, setChildOpen] = useState(-1)
 
   const [heigthSideMenu, setHeigthSideMenu] = useState('100%')
+  const [widthMenuContainer, setWidthMenuContainer] = useState('')
   const [marginTopSideMenu, setMarginTopSideMenu] = useState('0')
+  const [justifyContentSideMenuContainer, setJustifyContentSideMenuContainer] =
+    useState('left')
+  const [marginLeftMenuUpDown, setMarginLeftMenuUpDown] = useState('8.8735px')
+  const [widthMenuUpDown, setWidthMenuUpDown] = useState('8.8735px')
 
   const isSBEx = props.isSBExpanded !== '2rem'
 
@@ -28,20 +33,52 @@ function SideMenu(props) {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 767) {
-        setHeigthSideMenu('90%')
-        setMarginTopSideMenu('4%')
+        setHeigthSideMenu('calc(100% - 40px - 10.5vw)')
+        setMarginTopSideMenu('3.5vw')
+        setWidthMenuContainer('90%')
+        setJustifyContentSideMenuContainer('center')
+        setMarginLeftMenuUpDown('')
       } else {
         setHeigthSideMenu('100%')
         setMarginTopSideMenu('')
+        setWidthMenuContainer('100%')
+        setJustifyContentSideMenuContainer('left')
+        setMarginLeftMenuUpDown('8.8735px')
+      }
+
+      if (isSBEx) {
+        if (window.innerWidth < 767) {
+          setWidthMenuUpDown('100%')
+        } else {
+          setWidthMenuUpDown('90%')
+        }
+      } else {
+        setWidthMenuUpDown('41.59px')
       }
 
       setTimeout(() => {
         if (window.innerWidth < 767) {
-          setHeigthSideMenu('90%')
-          setMarginTopSideMenu('4%')
+          setHeigthSideMenu('calc(100% - 40px - 10.5vw)')
+          setMarginTopSideMenu('3.5vw')
+          setWidthMenuContainer('90%')
+          setJustifyContentSideMenuContainer('center')
+          setMarginLeftMenuUpDown('')
         } else {
           setHeigthSideMenu('100%')
           setMarginTopSideMenu('')
+          setWidthMenuContainer('100%')
+          setJustifyContentSideMenuContainer('left')
+          setMarginLeftMenuUpDown('8.8735px')
+        }
+
+        if (isSBEx) {
+          if (window.innerWidth < 767) {
+            setWidthMenuUpDown('100%')
+          } else {
+            setWidthMenuUpDown('90%')
+          }
+        } else {
+          setWidthMenuUpDown('41.59px')
         }
       }, 10)
     }
@@ -61,7 +98,7 @@ function SideMenu(props) {
       window.removeEventListener('scroll', handleResize)
       window.removeEventListener('DOMContentLoaded', handleResize)
     }
-  }, [])
+  }, [isSBEx])
 
   const items = menu.map((item, index) => {
     const hasChildren = item.children && item.children.length > 0
@@ -156,14 +193,25 @@ function SideMenu(props) {
     <Box
       h={heigthSideMenu}
       className='side-menu-container'
-      style={{ marginTop: marginTopSideMenu }}>
-      <div className='menu-container'>
-        <div className='menu-up' style={{ width: isSBEx ? '90%' : '41.59px' }}>
+      style={{
+        marginTop: marginTopSideMenu,
+        justifyContent: justifyContentSideMenuContainer,
+      }}>
+      <div className='menu-container' style={{ width: widthMenuContainer }}>
+        <div
+          className='menu-up'
+          style={{
+            width: widthMenuUpDown,
+            marginLeft: marginLeftMenuUpDown,
+          }}>
           {items.slice(0, 5)}
         </div>
         <div
           className='menu-down'
-          style={{ width: isSBEx ? '90%' : '41.59px' }}>
+          style={{
+            width: widthMenuUpDown,
+            marginLeft: marginLeftMenuUpDown,
+          }}>
           {items.slice(5)}
         </div>
       </div>

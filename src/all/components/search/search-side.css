@@ -1,6 +1,14 @@
 .side-search-container {
-  width: 100%;
+  display: flex;
+  justify-content: center;
   position: relative;
+  margin-top: 3vw;
+}
+
+.side-search-sub-container {
+  position: sticky;
+  display: block;
+  width: 90%;
 }
 
 .side-input-container {

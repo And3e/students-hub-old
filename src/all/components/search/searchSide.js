@@ -8,7 +8,7 @@ import './search-side.css'
 function SearchSide() {
   const input = useRef(null)
   const [isClicked, setIsClicked] = useState(false)
-  const [displaySearchSide, setDisplaySearchSide] = useState('initial')
+  const [displaySearchSide, setDisplaySearchSide] = useState('')
 
   function handleClick() {
     setIsClicked(true)
@@ -19,7 +19,7 @@ function SearchSide() {
       const windowWidth = window.innerWidth
 
       if (windowWidth < 767) {
-        setDisplaySearchSide('initial')
+        setDisplaySearchSide('')
       } else {
         setDisplaySearchSide('none')
       }
@@ -37,26 +37,28 @@ function SearchSide() {
     <div
       className='side-search-container'
       style={{ display: displaySearchSide }}>
-      <Form className='d-flex'>
-        <div>
-          <button
-            onClick={handleClick}
-            className={`${isClicked ? 'clicked' : ''}`}
-            id='btn-submit'
-            type='submit'>
-            <Search />
-          </button>
-        </div>
-        <div className='side-input-container'>
-          <input
-            type='search'
-            placeholder='Cerca qualcosa...'
-            aria-label='Cerca qualcosa...'
-            className='side-search-input'
-            ref={input}
-          />
-        </div>
-      </Form>
+      <div className='side-search-sub-container'>
+        <Form className='d-flex'>
+          <div>
+            <button
+              onClick={handleClick}
+              className={`${isClicked ? 'clicked' : ''}`}
+              id='btn-submit'
+              type='submit'>
+              <Search />
+            </button>
+          </div>
+          <div className='side-input-container'>
+            <input
+              type='search'
+              placeholder='Cerca qualcosa...'
+              aria-label='Cerca qualcosa...'
+              className='side-search-input'
+              ref={input}
+            />
+          </div>
+        </Form>
+      </div>
     </div>
   )
 }

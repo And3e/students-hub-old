@@ -75,6 +75,8 @@ function MainNavbar({ pageID }) {
             'translateX(-' + burgerRoot.offsetWidth / 2 + 'px)'
           )
         }
+
+        refSBNavbar.current.style.overflowY = 'auto'
       }
       setTimeout(() => {
         setWidthHeaderSubContainer(
