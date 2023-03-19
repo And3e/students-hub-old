@@ -50,7 +50,7 @@ function MainNavbar({ pageID }) {
     function handleResize() {
       if (window.innerWidth >= 1200) {
         setDisplayLogoHeader('initial')
-        setWidthLogoHeader('18.75rem')
+        setWidthLogoHeader('15rem')
         setWidthSideBar('15rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')

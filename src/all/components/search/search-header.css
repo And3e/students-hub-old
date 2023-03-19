@@ -1,12 +1,11 @@
 .search-box {
-  width: 45px;
+  width: 40px;
   height: 40px;
   background-color: #0094de;
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
-  padding-left: 15px;
   cursor: pointer;
 }
 
@@ -30,7 +29,7 @@
 }
 
 .search-box.expanded {
-  width: 300px;
+  width: 17rem;
   background-color: #f5f5f5;
   border: 1.5px solid;
   border-color: #0094de;
@@ -42,7 +41,7 @@
 }
 
 .search-icon {
-  transform: translateX(-1px);
+  transform: translateX(50%);
   font-size: 40px;
   color: #fff;
   transition: all 0.3s ease-in-out;
