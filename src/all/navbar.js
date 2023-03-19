@@ -103,6 +103,13 @@ function MainNavbar({ pageID }) {
 
   const handleSidebarMouseOver = () => {
     if (window.innerWidth >= 767 && window.innerWidth < 1200) {
+      refSBNavbar.current.addEventListener('transitionstart', () => {
+        refSBNavbar.current.style.overflowY = ''
+      })
+      refSBNavbar.current.addEventListener('transitionend', () => {
+        refSBNavbar.current.style.overflowY = 'auto'
+      })
+
       setWidthSideBar('12rem')
     } else if (window.innerWidth < 767) {
       setWidthSideBar('85%')

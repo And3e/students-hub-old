@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Box, NavLink } from '@mantine/core'
 
-import './side-menu-test.css'
+import './side-menu.css'
 
 import menu from './side-menu-data.js'
 
