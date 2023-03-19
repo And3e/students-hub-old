@@ -14,7 +14,6 @@ import {
 import SearchHeader from './components/search/searchHeader.js'
 import SearchSide from './components/search/searchSide.js'
 import SideMenu from './components/menu/side-menu.js'
-import Demo from './components/menu/side-menu-test2.js'
 
 import NotificationPopUp from './components/notification/notification-popup.js'
 import NotificationSide from './components/notification/notification-side.js'
@@ -172,7 +171,7 @@ function MainNavbar({ pageID }) {
             style={{ width: widthSideBar }}
             ref={refSBNavbar}>
             <SearchSide />
-            <Demo
+            <SideMenu
               isSBExpanded={widthSideBar}
               pageID={pageID}
               onChildData={handleChildData}

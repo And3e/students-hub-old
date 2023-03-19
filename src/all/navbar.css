@@ -15,7 +15,6 @@
 
 .side-bar {
   transition: width 0.2s ease-in-out;
-  padding: 16px 0px 16px 10px;
   display: inline;
   justify-content: center;
   overflow-y: auto;

@@ -1,31 +1,62 @@
 .side-menu-container {
-  height: 100%;
-  display: flex;
   justify-content: left;
-  transform: translateX(-0.3vw);
+  display: flex;
 }
 
 .menu-container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
 }
 
 .menu-up,
 .menu-down {
   display: grid;
-  justify-content: space-between;
-  align-items: center;
+  margin-left: 8.8735px;
+  justify-content: left;
   grid-template-columns: 1fr;
-  width: 100%;
   gap: 1vw;
+  cursor: pointer;
+}
+
+.menu-up a:link,
+.menu-up a:visited,
+.menu-down a:link,
+.menu-down a:visited {
+  text-decoration: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.menu-up a:hover,
+.menu-up a:active,
+.menu-down a:hover,
+.menu-down a:active {
+  text-decoration: none;
 }
 
 .menu-up {
-  margin-bottom: 1vw;
+  padding-top: 1vw;
 }
 
 .menu-down {
   padding-bottom: 1vw;
+}
+
+.menu-element {
+  border-radius: 5px;
+  display: flex;
+  vertical-align: center;
+  height: 37.7px;
+}
+
+.mantine-1l4mhad {
+  transition: all 0.2s ease-in-out;
+  margin-right: 0;
+}
+
+.mantine-dstkpx {
+  line-height: 0;
+  text-transform: capitalize;
 }

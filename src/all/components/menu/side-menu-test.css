@@ -1,11 +1,11 @@
 .side-menu-container {
-  width: 100%;
+  justify-content: left;
   display: flex;
-  justify-content: center;
 }
 
 .menu-container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -13,9 +13,8 @@
 .menu-up,
 .menu-down {
   display: grid;
-  margin-left: 11.21px;
+  margin-left: 8.8735px;
   justify-content: left;
-  align-items: center;
   grid-template-columns: 1fr;
   gap: 1vw;
   cursor: pointer;

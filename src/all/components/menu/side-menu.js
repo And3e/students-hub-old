@@ -1,68 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import IconWithText from './icon-with-text.js'
-import {
-  CardHeading,
-  Folder,
-  PersonVideo3,
-  CalendarDate,
-  Star,
-  Question,
-  Person,
-} from 'react-bootstrap-icons'
 
-import './side-menu.css'
+import { Box, NavLink } from '@mantine/core'
+
+import './side-menu-test.css'
+
+import menu from './side-menu-data.js'
 
 function SideMenu(props) {
+  const [active, setActive] = useState(props.pageID)
+  const [activeCaller, setActiveCaller] = useState(-1)
+  const [childOpen, setChildOpen] = useState(-1)
+
   const [heigthSideMenu, setHeigthSideMenu] = useState('100%')
   const [marginTopSideMenu, setMarginTopSideMenu] = useState('0')
 
-  const menuUp = [
-    {
-      title: 'bacheca',
-      icon: CardHeading,
-      size: 30,
-      link: '/dashboard',
-    },
-    {
-      title: 'risorse',
-      icon: Folder,
-      size: 30,
-      link: '/resources',
-    },
-    {
-      title: 'ripetizioni',
-      icon: PersonVideo3,
-      size: 30,
-      link: '/lessons',
-    },
-    {
-      title: 'calendario',
-      icon: CalendarDate,
-      size: 30,
-      link: '/calendar',
-    },
-    {
-      title: 'crediti',
-      icon: Star,
-      size: 30,
-      link: '/credits',
-    },
-  ]
+  const isSBEx = props.isSBExpanded !== '2rem'
 
-  const menuDown = [
-    {
-      title: 'info',
-      icon: Question,
-      size: 30,
-      link: '/info',
-    },
-    {
-      title: 'account',
-      icon: Person,
-      size: 30,
-      link: '/account',
-    },
-  ]
+  useEffect(() => {
+    props.onChildData(active, childOpen !== -1)
+
+    if (!isSBEx && childOpen !== -1) {
+      setChildOpen(-1)
+      setActive(activeCaller)
+    }
+  }, [props, active, childOpen, isSBEx, activeCaller])
 
   useEffect(() => {
     function handleResize() {
@@ -71,7 +32,7 @@ function SideMenu(props) {
         setMarginTopSideMenu('4%')
       } else {
         setHeigthSideMenu('100%')
-        setMarginTopSideMenu('0')
+        setMarginTopSideMenu('')
       }
 
       setTimeout(() => {
@@ -80,7 +41,7 @@ function SideMenu(props) {
           setMarginTopSideMenu('4%')
         } else {
           setHeigthSideMenu('100%')
-          setMarginTopSideMenu('0')
+          setMarginTopSideMenu('')
         }
       }, 10)
     }
@@ -102,41 +63,111 @@ function SideMenu(props) {
     }
   }, [])
 
-  const isSBEx = props.isSBExpanded !== '2rem'
+  const items = menu.map((item, index) => {
+    const hasChildren = item.children && item.children.length > 0
+
+    const handleActive = (index) => {
+      if (activeCaller === -1) {
+        setActiveCaller(active)
+      }
+
+      setActive(index)
+
+      if (hasChildren) {
+        if (childOpen === -1) {
+          setChildOpen(index)
+        } else if (index === childOpen) {
+          setChildOpen(-1)
+          setActive(activeCaller)
+        }
+      }
+    }
+
+    const renderChildLinks = (children) => {
+      return children.map((child, childIndex) => {
+        const childIsActive =
+          `${item.link}${child.link}` === window.location.pathname
+
+        return (
+          <NavLink
+            key={`${item.id}-${childIndex}`}
+            active={childIsActive}
+            label={isSBEx ? child.label : ''}
+            description={child.description}
+            rightSection={child.rightSection}
+            className='menu-element'
+            icon={
+              <child.icon
+                size={child.size}
+                stroke={child.stroke}
+                style={{
+                  transition: 'all 0.2s ease-in-out',
+                  marginRight: isSBEx ? '10px' : '0px',
+                }}
+              />
+            }
+            onClick={() => {
+              setActive(index)
+              window.location.pathname = `${item.link}${child.link}`
+            }}
+          />
+        )
+      })
+    }
+
+    return (
+      <div key={item.id}>
+        <NavLink
+          active={index === active}
+          label={isSBEx ? item.label : ''}
+          description={item.description}
+          rightSection={item.rightSection}
+          className='menu-element maybe-child'
+          style={{
+            width: isSBEx ? '100%' : '41.59px',
+            transition: 'all 0.2s ease-in-out',
+          }}
+          icon={
+            <item.icon
+              size={item.size}
+              stroke={item.stroke}
+              style={{
+                transition: 'all 0.2s ease-in-out',
+                marginRight: isSBEx ? '10px' : '0px',
+              }}
+            />
+          }
+          onClick={() => {
+            if (hasChildren && isSBEx) {
+              handleActive(index)
+            } else {
+              window.location.pathname = item.link
+            }
+          }}>
+          {hasChildren && isSBEx && (
+            <div className='submenu'>{renderChildLinks(item.children)}</div>
+          )}
+        </NavLink>
+      </div>
+    )
+  })
 
   return (
-    <div
+    <Box
+      h={heigthSideMenu}
       className='side-menu-container'
-      style={{ height: heigthSideMenu, marginTop: marginTopSideMenu }}>
+      style={{ marginTop: marginTopSideMenu }}>
       <div className='menu-container'>
-        <div className='menu-up'>
-          {menuUp.map((out, index) => (
-            <IconWithText
-              key={index}
-              title={out.title}
-              icon={out.icon}
-              size={out.size}
-              link={out.link}
-              isSBExpanded={isSBEx}
-              isActive={out.link === props.pagName}
-            />
-          ))}
+        <div className='menu-up' style={{ width: isSBEx ? '90%' : '41.59px' }}>
+          {items.slice(0, 5)}
         </div>
-        <div className='menu-down'>
-          {menuDown.map((out, index) => (
-            <IconWithText
-              key={index}
-              title={out.title}
-              icon={out.icon}
-              size={out.size}
-              link={out.link}
-              isSBExpanded={isSBEx}
-              isActive={out.link === props.pagName}
-            />
-          ))}
+        <div
+          className='menu-down'
+          style={{ width: isSBEx ? '90%' : '41.59px' }}>
+          {items.slice(5)}
         </div>
       </div>
-    </div>
+    </Box>
   )
 }
 
