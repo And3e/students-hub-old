@@ -41,7 +41,7 @@
 }
 
 .search-icon {
-  transform: translateX(50%);
+  transform: translateX(10px);
   font-size: 40px;
   color: #fff;
   transition: all 0.3s ease-in-out;

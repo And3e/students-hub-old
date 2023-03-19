@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import {
   AppShell,
@@ -33,8 +34,8 @@ function MainNavbar({ pageID }) {
 
   // Dynamic changes
   const [displayLogoHeader, setDisplayLogoHeader] = useState('initial')
-  const [widthLogoHeader, setWidthLogoHeader] = useState('18.75rem')
-  const [widthSideBar, setWidthSideBar] = useState('18rem')
+  const [widthLogoHeader, setWidthLogoHeader] = useState('12rem')
+  const [widthSideBar, setWidthSideBar] = useState('12rem')
   const [displayHeaderShortLogo, setDisplayHeaderShortLogo] = useState('none')
   const [transformHeaderShortLogo, setTransformHeaderShortLogo] = useState('')
   const [displayHeaderSupportChild, setDisplayHeaderSupportChild] =
@@ -50,14 +51,14 @@ function MainNavbar({ pageID }) {
     function handleResize() {
       if (window.innerWidth >= 1200) {
         setDisplayLogoHeader('initial')
-        setWidthLogoHeader('15rem')
-        setWidthSideBar('15rem')
+        setWidthLogoHeader('13rem')
+        setWidthSideBar('13rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
         setMarginLeftContent('2rem')
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         setDisplayLogoHeader('initial')
-        setWidthLogoHeader('12.5rem')
+        setWidthLogoHeader('12rem')
         setWidthSideBar('2rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
@@ -152,6 +153,35 @@ function MainNavbar({ pageID }) {
     setIsOpenedSBC(isOpened)
   }
 
+  const handlePageTitle = () => {
+    switch (pageID) {
+      case 0: {
+        return '- Bacheca'
+      }
+      case 1: {
+        return '- Risorse'
+      }
+      case 2: {
+        return '- Ripetizioni'
+      }
+      case 3: {
+        return '- Calendario'
+      }
+      case 4: {
+        return '- Crediti'
+      }
+      case 5: {
+        return '- Info'
+      }
+      case 6: {
+        return '- Account'
+      }
+      default: {
+        return ''
+      }
+    }
+  }
+
   return (
     <AppShell
       styles={{
@@ -240,6 +270,9 @@ function MainNavbar({ pageID }) {
           </div>
         </Header>
       }>
+      <Helmet>
+        <title>Students Hub {handlePageTitle()}</title>
+      </Helmet>
       <div className='content' style={{ marginLeft: marginLeftContent }}>
         <Text style={{ marginTop: '500px' }}>*sono la home* aaaaaa</Text>
       </div>
