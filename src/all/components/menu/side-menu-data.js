@@ -13,7 +13,7 @@ import {
 const stroke = '1.5'
 const size = '1.1rem'
 
-const menu = [
+const menuData = [
   {
     icon: CardHeading,
     label: 'bacheca',
@@ -88,4 +88,4 @@ const menu = [
   },
 ]
 
-export default menu
+export default menuData

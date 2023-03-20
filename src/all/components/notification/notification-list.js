@@ -1,36 +1,15 @@
 import React, { useState } from 'react'
 import SwipeToDelete from 'react-swipe-to-delete-ios'
 
-import Notification from './notification'
+// components
+import Notification from './notification.js'
 import SeeOtherBtn from './see-other.js'
 
+// data
+import notificationsData from './notification-data.js'
+
 const NotificationList = () => {
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      title: 'Titolo notifica',
-      date: '23:13',
-      content: 'Questo è un esempio di notifica',
-    },
-    {
-      id: 2,
-      title: 'Notifica 2',
-      date: '22:47',
-      content: "Questa è un'altra notifica",
-    },
-    {
-      id: 3,
-      title: 'Notifica 3',
-      date: '10/03, 00:06',
-      content: 'Questa è la meno recente',
-    },
-    {
-      id: 4,
-      title: 'Notifica 4',
-      date: '10/03, 00:06',
-      content: 'Questa è una notifica in più',
-    },
-  ])
+  const [notifications, setNotifications] = useState(notificationsData)
 
   const handleDelete = (id) => {
     const newNotifications = notifications.filter(

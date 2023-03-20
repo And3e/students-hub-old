@@ -4,7 +4,7 @@ import { Box, NavLink } from '@mantine/core'
 
 import './side-menu.css'
 
-import menu from './side-menu-data.js'
+import menuData from './side-menu-data.js'
 
 function SideMenu(props) {
   const [active, setActive] = useState(props.pageID)
@@ -100,7 +100,7 @@ function SideMenu(props) {
     }
   }, [isSBEx])
 
-  const items = menu.map((item, index) => {
+  const items = menuData.map((item, index) => {
     const hasChildren = item.children && item.children.length > 0
 
     const handleActive = (index) => {
