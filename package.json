@@ -25,6 +25,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "embla-carousel-react": "^7.1.0",
+    "netlify-cli": "^13.1.6",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-bootstrap-icons": "^1.10.2",
