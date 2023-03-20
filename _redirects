@@ -1,0 +1,11 @@
+# Redirects from what the browser requests to what we serve
+/dashboard /
+/resources /resources
+/lessons /lessons
+/lessons/give /lessons/give
+/lessons/receive /lessons/receive
+/calendar /calendar
+/credits /credits
+/info /info
+/account /account
+/admin /admin
