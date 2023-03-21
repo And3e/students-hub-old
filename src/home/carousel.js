@@ -72,7 +72,7 @@ function Card(props) {
 }
 
 export default function NewsCarousel() {
-    const autoplay = useRef(Autoplay({ delay: 10000 }));
+    const autoplay = useRef(Autoplay({ delay: 5000 }));
 
     // Creazione delle Slides richiamando Card
     const slides = data.map((item) => (
