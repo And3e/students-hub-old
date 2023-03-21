@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-	<img src="./src/img/logos/gif-students-hub-en-tr.gif" alt="Students Hub gif" style="max-width: 300px"/>
+	<img src="./src/img/gifs/gif-students-hub-en-tr.gif" alt="Students Hub Gif EN" style="max-width: 300px"/>
 </div>
 
 <img src="./src/img/flags/united-kingdom.png" alt="English part" style="width: 20px; margin-top: 20px;"/>
@@ -36,7 +36,7 @@ In case of any **errors** go here: [`https://facebook.github.io/create-react-app
 ---
 
 <div style="text-align: center;">
-	<img src="./src/img/logos/gif-students-hub-tr.gif" alt="Students Hub gif" style="max-width: 300px"/>
+	<img src="./src/img/gifs/gif-students-hub-tr.gif" alt="Students Hub Gif ITA" style="max-width: 300px"/>
 </div>
 
 <img src="./src/img/flags/italy.png" alt="Italian part" style="width: 20px; margin-top: 20px;"/>
