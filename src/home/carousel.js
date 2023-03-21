@@ -94,6 +94,8 @@ export default function NewsCarousel() {
                 plugins={[autoplay.current]}
                 onMouseEnter={autoplay.current.stop}
                 onMouseLeave={autoplay.current.reset}
+                onClick={autoplay.current.reset}
+
             >
                 {slides}
             </Carousel>
