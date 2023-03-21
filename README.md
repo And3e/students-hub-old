@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+<div style="text-align: center;">
+	<img src="./src/img/gifs/gif-students-hub-en-tr.gif" alt="Students Hub Gif EN" style="max-width: 250px"/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./src/img/flags/united-kingdom.png" alt="English part" style="width: 20px; margin-top: 20px;"/>
 
-## Available Scripts
+A dynamic website SOS built with React, Mantine and Bootstrap.
+This site is essentially a `repetition site`, but not a common one! 
+Thanks to `Students Hub` you can **give** and **receive** _tutorials_ ✒️, earn _credits_ 🪙, browse the _resources_ 📒 shared by the **community** 👨‍🎓👩‍🎓 and much more! Let's make learning more enjoyable, let's do it together!
 
-In the project directory, you can run:
+## Authors 👥
 
-### `npm start`
+⭐ Leone Lorenzo\
+⭐ Marguerettaz André
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We are two students from the Technical Institute **ISIT Manzetti** (AO), Italy, _happy to learn_ and grow through `programming`. This is a site created **specifically** for students of Aosta Valley, and who knows, maybe even for the whole of Italy 🇮🇹!
+
+## Set up & run ⏩
+
+### `npm start` 🛫
+
+Runs the app in the `development mode`.\
+Open [`http://localhost:3000`](http://localhost:3000) to view it in your **browser**.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You may also see any lint _errors_ in the console.
 
-### `npm test`
+## Learn More 📚
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To learn `React`, check out the [`React documentation`](https://reactjs.org/).
 
-### `npm run build`
+### Error documentation 📜
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In case of any **errors** go here: [`https://facebook.github.io/create-react-app/docs/`](https://facebook.github.io/create-react-app/docs/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div style="text-align: center;">
+	<img src="./src/img/gifs/gif-students-hub-tr.gif" alt="Students Hub Gif ITA" style="max-width: 250px"/>
+</div>
 
-### `npm run eject`
+<img src="./src/img/flags/italy.png" alt="Italian part" style="width: 20px; margin-top: 20px;"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Un sito web dinamico costruito con React, Mantine e Bootstrap. Questo sito è essenzialmente un `sito per ripetizioni`, ma non uno qualsiasi!
+Grazie a `Students Hub` è possibile **dare** e **ricevere** _ripetizioni_ ✒️, guadagnare _crediti_ 🪙, consultare le _risorse_ 📒 condivise dalla **community** 👨‍🎓👩‍🎓 e molto altro! Rendiamo l'apprendimento più piacevole, facciamolo insieme!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Autori 👥
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+⭐ Leone Lorenzo\
+⭐ Marguerettaz André
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Siamo due studenti dell'Istituto Tecnico **ISIT Manzetti** (AO), Italia, _felici di imparare_ e crescere attraverso la `programmazione`. Questo è un sito creato **specificamente** per gli studenti della Valle d'Aosta, e chissà, forse anche per tutta l'Italia 🇮🇹!
 
-## Learn More
+## Configurazione ed esecuzione ⏩
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `npm start` 🛫
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Esegue l'applicazione in "modalità sviluppo".
+Apri [`http://localhost:3000`](http://localhost:3000) per visualizzarlo nel tuo **browser**.
 
-### Code Splitting
+La pagina verrà ricaricata quando si apportano modifiche.\
+Si possono anche vedere gli _errori_ all'interno della console.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Per saperne di più 📚
 
-### Analyzing the Bundle Size
+Per imparare `React`, consulta la [`documentazione di React`](https://reactjs.org/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Documentazione sugli errori 📜
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In caso di eventuali **errori** recarsi qui: [`https://facebook.github.io/create-react-app/docs/`](https://facebook.github.io/create-react-app/docs/)

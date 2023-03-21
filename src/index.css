@@ -1,0 +1,26 @@
+.btn-color {
+  background-color: #0094ed;
+}
+
+.btn-color:hover {
+  background-color: #1c7ed6;
+}
+
+.visible-scrollbar,
+.invisible-scrollbar,
+.mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+
+::-webkit-scrollbar {
+  width: 0.5vw;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 10px;
+}

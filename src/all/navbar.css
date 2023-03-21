@@ -1,13 +1,5 @@
-.logo {
-  display: none;
-}
-
 .img-center {
   vertical-align: middle;
-}
-
-.btn-bell {
-  transform: translateY(-2.5px);
 }
 
 .header-container {
@@ -21,16 +13,14 @@
   justify-content: space-between;
 }
 
-.header-short-logo {
-  display: none;
-}
-
 .side-bar {
   transition: width 0.2s ease-in-out;
+  display: inline;
+  justify-content: center;
+  padding: 0;
 }
 
 .content {
-  transition: margin-left 0.2s ease-in-out;
 }
 
 .post-container {
