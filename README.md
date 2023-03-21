@@ -1,5 +1,6 @@
 <div style="text-align: center;">
-	<img src="./src/img/gifs/gif-students-hub-en-tr.gif" alt="Students Hub Gif EN" style="max-width: 250px"/>
+	![Students Hub dark](./src/img/gifs/dark/en/gif-students-hub-tr-en.gif#gh-dark-mode-only)
+	![Students Hub light](./src/img/gifs/light/en/gif-students-hub-en-tr.gif#gh-light-mode-only)
 </div>
 
 <img src="./src/img/flags/united-kingdom.png" alt="English part" style="width: 20px; margin-top: 20px;"/>
@@ -36,7 +37,8 @@ In case of any **errors** go here: [`https://facebook.github.io/create-react-app
 ---
 
 <div style="text-align: center;">
-	<img src="./src/img/gifs/gif-students-hub-tr.gif" alt="Students Hub Gif ITA" style="max-width: 250px"/>
+		![Students Hub dark](./src/img/gifs/dark/it/gif-students-hub-tr-it.gif#gh-dark-mode-only)
+	![Students Hub light](./src/img/gifs/light/it/gif-students-hub-it-tr.gif#gh-light-mode-only)
 </div>
 
 <img src="./src/img/flags/italy.png" alt="Italian part" style="width: 20px; margin-top: 20px;"/>
