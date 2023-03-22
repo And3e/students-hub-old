@@ -1,6 +1,6 @@
-import propic1 from '../img/test-profile-pictures/propic1.jpg'
-import propic2 from '../img/test-profile-pictures/propic2.jpg'
-import propic3 from '../img/test-profile-pictures/propic3.jpg'
+import propic1 from '../../img/test-profile-pictures/propic1.jpg'
+import propic2 from '../../img/test-profile-pictures/propic2.jpg'
+import propic3 from '../../img/test-profile-pictures/propic3.jpg'
 
 const data = [
     {

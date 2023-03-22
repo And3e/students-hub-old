@@ -14,8 +14,8 @@ import {
 } from '@mantine/core'
 
 import { useRef } from 'react'
-import Carousel from '../home/carousel'
-import Post from '../home/post'
+import Carousel from '../pages/home/carousel'
+import Post from '../pages/home/post'
 
 
 import './navbar.css'

@@ -1,9 +1,9 @@
-import img1 from '../img/news/progetto.jpg'
-import img2 from '../img/news/tesolin.jpeg'
-import img3 from '../img/news/scuola4anni.jpg'
-import img4 from '../img/news/tzamberlet.jpg'
-import img5 from '../img/news/sedie.jpg'
-import img6 from '../img/news/ambiente.jpg'
+import img1 from '../../img/news/progetto.jpg'
+import img2 from '../../img/news/tesolin.jpeg'
+import img3 from '../../img/news/scuola4anni.jpg'
+import img4 from '../../img/news/tzamberlet.jpg'
+import img5 from '../../img/news/sedie.jpg'
+import img6 from '../../img/news/ambiente.jpg'
 
 const data = [
     {
