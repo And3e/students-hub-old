@@ -10,8 +10,11 @@ import './index.css'
 
 // Navbar
 import MainNavbar from './all/navbar.js'
-// Components
 
+// Components
+import CalendarPage from './pages/calendar/calendar.js'
+
+//! FARE PAGE 404
 // <Route path="*" element={<NoMatch />} />
 
 function App() {
@@ -28,7 +31,11 @@ function App() {
           element={<MainNavbar pageID={2} />}
           exact
         />
-        <Route path='/calendar' element={<MainNavbar pageID={3} />} exact />
+        <Route
+          path='/calendar'
+          element={<MainNavbar pageID={3} page={<CalendarPage />} />}
+          exact
+        />
         <Route path='/credits' element={<MainNavbar pageID={4} />} exact />
 
         <Route path='/info' element={<MainNavbar pageID={5} />} exact />

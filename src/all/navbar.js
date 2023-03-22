@@ -6,7 +6,6 @@ import {
   AppShell,
   Navbar,
   Header,
-  Text,
   MediaQuery,
   Burger,
   useMantineTheme,
@@ -25,7 +24,7 @@ import './navbar.css'
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
 
-function MainNavbar({ pageID }) {
+function MainNavbar({ pageID, page }) {
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
   const refHeader = useRef(null)
@@ -55,7 +54,7 @@ function MainNavbar({ pageID }) {
         setWidthSideBar('13rem')
         setDisplayHeaderShortLogo('none')
         setDisplayHeaderSupportChild('none')
-        setMarginLeftContent('2rem')
+        setMarginLeftContent('1rem')
       } else if (window.innerWidth >= 767 && window.innerWidth < 1200) {
         setDisplayLogoHeader('initial')
         setWidthLogoHeader('12rem')
@@ -276,7 +275,7 @@ function MainNavbar({ pageID }) {
         <title>Students Hub {handlePageTitle()}</title>
       </Helmet>
       <div className='content' style={{ marginLeft: marginLeftContent }}>
-        <Text style={{ marginTop: '500px' }}>*sono la home* aaaaaa</Text>
+        {page}
       </div>
     </AppShell>
   )
