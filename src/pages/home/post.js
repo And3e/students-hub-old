@@ -22,36 +22,60 @@ import './modal.css'
 import { useMediaQuery } from '@mantine/hooks';
 
 
+
 export default function Posts() {
+
+    function sliceMessages(data) {
+        const slicedData = [];
+        for (let i = 0; i < data.length; i += 2) {
+            const post1 = data[i];
+            const post2 = data[i + 1];
+            const message1 = post1.message;
+            const message2 = post2.message;
+            const maxLength = Math.max(message1.length, message2.length);
+            const newMessage1 = message1.padEnd(maxLength, " ");
+            const newMessage2 = message2.padEnd(maxLength, " ");
+            console.log(i)
+
+            slicedData.push({
+                ...post1,
+                message: newMessage1,
+            });
+
+            slicedData.push({
+                ...post2,
+                message: newMessage2,
+            });
+        }
+        return slicedData;
+    }
 
     const isMobileScreen = useMediaQuery('(max-width: 500px)')
     const isSmallScreen = useMediaQuery('(min-width: 500px) and (max-width: 950px)');
     const isMediumScreen = useMediaQuery('(min-width: 950px) and (max-width: 1500px)');
     const isLargeScreen = useMediaQuery('(min-width: 1500px)');
 
-
-    // Theme
-    // const theme = useMantineTheme();
-
     // Salvati
     const [bookmarks, setBookmarks] = useState(
         Array(data.length).fill(false)
     );
-    const handleClickBookmark = (index) => {
+    const handleClickBookmark = (i) => {
         const newBookmarks = [...bookmarks];
-        newBookmarks[index] = !newBookmarks[index];
+        newBookmarks[i] = !newBookmarks[i];
         setBookmarks(newBookmarks);
     };
 
     // Modal
     const [opened, setOpened] = useState(Array(data.length).fill(false));
-    const handleClickModal = (index) => {
+    const handleClickModal = (i) => {
         setOpened(prev => {
             const newOpened = [...prev];
-            newOpened[index] = !newOpened[index];
+            newOpened[i] = !newOpened[i];
             return newOpened;
         });
     };
+
+    const slicedData = sliceMessages(data)
 
     return (
         <>
@@ -60,9 +84,9 @@ export default function Posts() {
                     cols={1}
                     spacing="md"
                 >
-                    {data.map((post, index) => (
+                    {data.map((post) => (
                         <Card
-                            key={index}
+                            key={post.id}
                             shadow="sm"
                             w
                             withBorder
@@ -133,11 +157,11 @@ export default function Posts() {
 
                             {/* Modal */}
                             <Modal
-                                key={index}
-                                opened={opened[index]}
+                                key={"modal-" + post.id}
+                                opened={opened[post.id]}
                                 onClose={() => setOpened(prev => {
                                     const newOpened = [...prev];
-                                    newOpened[index] = false;
+                                    newOpened[post.id] = false;
                                     return newOpened;
                                 })}
                                 title="Post"
@@ -148,27 +172,27 @@ export default function Posts() {
                                     blur: 3,
                                 }}
                             >
-                                <Group key={index} position="left">
-                                    <Avatar key={index} src={post.propic} />
-                                    <Text key={index} weight={600}> {post.name}</Text>
+                                <Group key={"modal-" + post.id} position="left">
+                                    <Avatar key={"modal-" + post.id} src={post.propic} />
+                                    <Text key={"modal-" + post.id} weight={600}> {post.name}</Text>
                                     {post.type === "Richiesta" ? (
-                                        <Badge key={index} color="pink" variant="light">
+                                        <Badge key={"modal-" + post.id} color="pink" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : post.type === "Ripetizione" ? (
-                                        <Badge key={index} color="green" variant="light">
+                                        <Badge key={"modal-" + post.id} color="green" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : (
-                                        <Badge key={index} color="violet" variant="light">
+                                        <Badge key={"modal-" + post.id} color="violet" variant="light">
                                             {post.type}
                                         </Badge>
                                     )}
                                 </Group>
 
 
-                                <Text key={index} weight={500}>{post.title}</Text>
-                                <Text key={index} size="sm" color="dimmed">{post.message}</Text>
+                                <Text key={"modal-" + post.id} weight={500}>{post.title}</Text>
+                                <Text key={"modal-" + post.id} size="sm" color="dimmed">{post.message}</Text>
                                 {/* <Text size="sm" color="dimmed">{post.message}</Text> */}
                             </Modal>
 
@@ -179,19 +203,19 @@ export default function Posts() {
                             >
 
                                 {post.message.length > 100 && (
-                                    <Button key={index}
+                                    <Button key={post.id}
                                         variant="light"
                                         color="blue"
                                         mt="md"
                                         radius="xl"
-                                        onClick={() => { handleClickModal(index) }}
+                                        onClick={() => { handleClickModal(post.id) }}
                                     >
                                         <EyeFill />
                                     </Button>
                                 )}
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     color="blue"
                                     mt="md"
@@ -201,13 +225,13 @@ export default function Posts() {
                                 </Button>
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     mt="md"
                                     radius="xl"
-                                    onClick={() => handleClickBookmark(index)}
+                                    onClick={() => handleClickBookmark(post.id)}
                                 >
-                                    {bookmarks[index] ? <BookmarkFill /> : <Bookmark />}
+                                    {bookmarks[post.id] ? <BookmarkFill /> : <Bookmark />}
 
                                 </Button>
 
@@ -222,9 +246,9 @@ export default function Posts() {
                     cols={1}
                     spacing="md"
                 >
-                    {data.map((post, index) => (
+                    {data.map((post) => (
                         <Card
-                            key={index}
+                            key={post.id}
                             shadow="sm"
                             w
                             withBorder
@@ -295,11 +319,11 @@ export default function Posts() {
 
                             {/* Modal */}
                             <Modal
-                                key={index}
-                                opened={opened[index]}
+                                key={"modal-" + post.id}
+                                opened={opened[post.id]}
                                 onClose={() => setOpened(prev => {
                                     const newOpened = [...prev];
-                                    newOpened[index] = false;
+                                    newOpened[post.id] = false;
                                     return newOpened;
                                 })}
                                 title="Post"
@@ -310,27 +334,27 @@ export default function Posts() {
                                     blur: 3,
                                 }}
                             >
-                                <Group key={index} position="left">
-                                    <Avatar key={index} src={post.propic} />
-                                    <Text key={index} weight={600}> {post.name}</Text>
+                                <Group key={post.id} position="left">
+                                    <Avatar key={"modal-" + post.id} src={post.propic} />
+                                    <Text key={"modal-" + post.id} weight={600}> {post.name}</Text>
                                     {post.type === "Richiesta" ? (
-                                        <Badge key={index} color="pink" variant="light">
+                                        <Badge key={"modal-" + post.id} color="pink" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : post.type === "Ripetizione" ? (
-                                        <Badge key={index} color="green" variant="light">
+                                        <Badge key={"modal-" + post.id} color="green" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : (
-                                        <Badge key={index} color="violet" variant="light">
+                                        <Badge key={"modal-" + post.id} color="violet" variant="light">
                                             {post.type}
                                         </Badge>
                                     )}
                                 </Group>
 
 
-                                <Text key={index} weight={500}>{post.title}</Text>
-                                <Text key={index} size="sm" color="dimmed">{post.message}</Text>
+                                <Text key={"modal-" + post.id} weight={500}>{post.title}</Text>
+                                <Text key={"modal-" + post.id} size="sm" color="dimmed">{post.message}</Text>
                                 {/* <Text size="sm" color="dimmed">{post.message}</Text> */}
                             </Modal>
 
@@ -340,12 +364,12 @@ export default function Posts() {
                                 noWrap
                             >
                                 {post.message.length > 100 && (
-                                    <Button key={index}
+                                    <Button key={post.id}
                                         variant="light"
                                         color="blue"
                                         mt="md"
                                         radius="xl"
-                                        onClick={() => { handleClickModal(index) }}
+                                        onClick={() => { handleClickModal(post.id) }}
                                         leftIcon={<EyeFill />}
                                     >
                                         Visualizza
@@ -353,7 +377,7 @@ export default function Posts() {
                                 )}
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     color="blue"
                                     mt="md"
@@ -364,14 +388,14 @@ export default function Posts() {
                                 </Button>
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     mt="md"
                                     radius="xl"
-                                    leftIcon={bookmarks[index] ? <BookmarkFill /> : <Bookmark />}
-                                    onClick={() => handleClickBookmark(index)}
+                                    leftIcon={bookmarks[post.id] ? <BookmarkFill /> : <Bookmark />}
+                                    onClick={() => handleClickBookmark(post.id)}
                                 >
-                                    {bookmarks[index] ? "Salvato" : "Salva"}
+                                    {bookmarks[post.id] ? "Salvato" : "Salva"}
                                 </Button>
 
                             </Group>
@@ -380,15 +404,15 @@ export default function Posts() {
                 </SimpleGrid>
             }
 
+
             {isMediumScreen &&
                 <SimpleGrid
                     cols={2}
                     spacing="md"
                 >
-                    {data.map((post, index) => (
-
+                    {slicedData.map((post) => (
                         <Card
-                            key={index}
+                            key={post.id}
                             shadow="sm"
                             w
                             withBorder
@@ -447,24 +471,19 @@ export default function Posts() {
                             </Group>
 
                             {/* Testo */}
-                            {post.message.length > 100 ? (
-                                <Text size="sm" color="dimmed">
-                                    {post.message.slice(0, 150)}...
-                                </Text>
-                            ) : (
-                                <Text size="sm" color="dimmed">
-                                    {post.message}
-                                </Text>
-                            )}
+                            <Text size="sm" color="dimmed">
+                                {post.id}
+                                {post.message}
+                            </Text>
 
 
                             {/* Modal */}
                             <Modal
-                                key={index}
-                                opened={opened[index]}
+                                key={"modal-" + post.id}
+                                opened={opened[post.id]}
                                 onClose={() => setOpened(prev => {
                                     const newOpened = [...prev];
-                                    newOpened[index] = false;
+                                    newOpened[post.id] = false;
                                     return newOpened;
                                 })}
                                 title="Post"
@@ -475,27 +494,27 @@ export default function Posts() {
                                     blur: 3,
                                 }}
                             >
-                                <Group key={index} position="left">
-                                    <Avatar key={index} src={post.propic} />
-                                    <Text key={index} weight={600}> {post.name}</Text>
+                                <Group key={post.id} position="left">
+                                    <Avatar key={"modal-" + post.id} src={post.propic} />
+                                    <Text key={"modal-" + post.id} weight={600}> {post.name}</Text>
                                     {post.type === "Richiesta" ? (
-                                        <Badge key={index} color="pink" variant="light">
+                                        <Badge key={"modal-" + post.id} color="pink" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : post.type === "Ripetizione" ? (
-                                        <Badge key={index} color="green" variant="light">
+                                        <Badge key={"modal-" + post.id} color="green" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : (
-                                        <Badge key={index} color="violet" variant="light">
+                                        <Badge key={"modal-" + post.id} color="violet" variant="light">
                                             {post.type}
                                         </Badge>
                                     )}
                                 </Group>
 
 
-                                <Text key={index} weight={500}>{post.title}</Text>
-                                <Text key={index} size="sm" color="dimmed">{post.message}</Text>
+                                <Text key={"modal-" + post.id} weight={500}>{post.title}</Text>
+                                <Text key={"modal-" + post.id} size="sm" color="dimmed">{post.message}</Text>
                                 {/* <Text size="sm" color="dimmed">{post.message}</Text> */}
                             </Modal>
 
@@ -506,12 +525,12 @@ export default function Posts() {
                             >
 
                                 {post.message.length > 100 && (
-                                    <Button key={index}
+                                    <Button key={post.id}
                                         variant="light"
                                         color="blue"
                                         mt="md"
                                         radius="xl"
-                                        onClick={() => { handleClickModal(index) }}
+                                        onClick={() => { handleClickModal(post.id) }}
                                     >
                                         <EyeFill />
                                         Visualizza
@@ -519,7 +538,7 @@ export default function Posts() {
                                 )}
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     color="blue"
                                     mt="md"
@@ -530,21 +549,18 @@ export default function Posts() {
                                 </Button>
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     mt="md"
                                     radius="xl"
-                                    leftIcon={bookmarks[index] ? <BookmarkFill /> : <Bookmark />}
-                                    onClick={() => handleClickBookmark(index)}
+                                    leftIcon={bookmarks[post.id] ? <BookmarkFill /> : <Bookmark />}
+                                    onClick={() => handleClickBookmark(post.id)}
                                 >
-                                    {bookmarks[index] ? "Salvato" : "Salva"}
+                                    {bookmarks[post.id] ? "Salvato" : "Salva"}
                                 </Button>
 
                             </Group>
                         </Card>
-
-
-
                     ))}
                 </SimpleGrid>
 
@@ -555,9 +571,9 @@ export default function Posts() {
                     cols={3}
                     spacing="md"
                 >
-                    {data.map((post, index) => (
+                    {data.map((post) => (
                         <Card
-                            key={index}
+                            key={post.id}
                             shadow="sm"
                             w
                             withBorder
@@ -616,23 +632,17 @@ export default function Posts() {
                             </Group>
 
                             {/* Testo */}
-                            {post.message.length > 150 ? (
-                                <Text size="sm" color="dimmed">
-                                    {post.message.slice(0, 150)}...
-                                </Text>
-                            ) : (
-                                <Text size="sm" color="dimmed">
-                                    {post.message}
-                                </Text>
-                            )}
+                            <Text size="sm" color="dimmed">
+                                {post.message}
+                            </Text>
 
                             {/* Modal */}
                             <Modal
-                                key={index}
-                                opened={opened[index]}
+                                key={"modal-" + post.id}
+                                opened={opened[post.id]}
                                 onClose={() => setOpened(prev => {
                                     const newOpened = [...prev];
-                                    newOpened[index] = false;
+                                    newOpened[post.id] = false;
                                     return newOpened;
                                 })}
                                 title="Post"
@@ -643,27 +653,27 @@ export default function Posts() {
                                     blur: 3,
                                 }}
                             >
-                                <Group key={index} position="left">
-                                    <Avatar key={index} src={post.propic} />
-                                    <Text key={index} weight={600}> {post.name}</Text>
+                                <Group key={"modal-" + post.id} position="left">
+                                    <Avatar key={"modal-" + post.id} src={post.propic} />
+                                    <Text key={"modal-" + post.id} weight={600}> {post.name}</Text>
                                     {post.type === "Richiesta" ? (
-                                        <Badge key={index} color="pink" variant="light">
+                                        <Badge key={"modal-" + post.id} color="pink" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : post.type === "Ripetizione" ? (
-                                        <Badge key={index} color="green" variant="light">
+                                        <Badge key={"modal-" + post.id} color="green" variant="light">
                                             {post.type}
                                         </Badge>
                                     ) : (
-                                        <Badge key={index} color="violet" variant="light">
+                                        <Badge key={"modal-" + post.id} color="violet" variant="light">
                                             {post.type}
                                         </Badge>
                                     )}
                                 </Group>
 
 
-                                <Text key={index} weight={500}>{post.title}</Text>
-                                <Text key={index} size="sm" color="dimmed">{post.message}</Text>
+                                <Text key={"modal-" + post.id} weight={500}>{post.title}</Text>
+                                <Text key={"modal-" + post.id} size="sm" color="dimmed">{post.message}</Text>
                                 {/* <Text size="sm" color="dimmed">{post.message}</Text> */}
                             </Modal>
 
@@ -674,12 +684,12 @@ export default function Posts() {
                             >
 
                                 {post.message.length > 100 && (
-                                    <Button key={index}
+                                    <Button key={post.id}
                                         variant="light"
                                         color="blue"
                                         mt="md"
                                         radius="xl"
-                                        onClick={() => { handleClickModal(index) }}
+                                        onClick={() => { handleClickModal(post.id) }}
                                     >
                                         <EyeFill />
                                         Visualizza
@@ -687,7 +697,7 @@ export default function Posts() {
                                 )}
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     color="blue"
                                     mt="md"
@@ -698,14 +708,14 @@ export default function Posts() {
                                 </Button>
 
                                 <Button
-                                    key={index}
+                                    key={post.id}
                                     variant="light"
                                     mt="md"
                                     radius="xl"
-                                    leftIcon={bookmarks[index] ? <BookmarkFill /> : <Bookmark />}
-                                    onClick={() => handleClickBookmark(index)}
+                                    leftIcon={bookmarks[post.id] ? <BookmarkFill /> : <Bookmark />}
+                                    onClick={() => handleClickBookmark(post.id)}
                                 >
-                                    {bookmarks[index] ? "Salvato" : "Salva"}
+                                    {bookmarks[post.id] ? "Salvato" : "Salva"}
                                 </Button>
 
                             </Group>
