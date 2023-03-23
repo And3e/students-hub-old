@@ -22,7 +22,11 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Navigate to='/dashboard' />} />
-        <Route path='/dashboard' element={<MainNavbar pageID={0} />} exact />
+        <Route
+          path='/dashboard'
+          element={<MainNavbar pageID={0} page={<div>Dashboard</div>} />}
+          exact
+        />
         <Route path='/resources' element={<MainNavbar pageID={1} />} exact />
         <Route path='/lessons' element={<MainNavbar pageID={2} />} exact />
         <Route path='/lessons/give' element={<MainNavbar pageID={2} />} exact />

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import {
@@ -237,14 +236,14 @@ function MainNavbar({ pageID, page }) {
             <div
               className='logo-header'
               style={{ display: displayLogoHeader, width: widthLogoHeader }}>
-              <Link to='/dashboard'>
+              <a href='/dashboard'>
                 <img
                   src={logo_scritta}
                   height='35'
                   className='d-inline-block align-center'
                   alt='Students Hub logo long'
                 />
-              </Link>
+              </a>
             </div>
             <div
               className='header-sub-container'
@@ -255,14 +254,14 @@ function MainNavbar({ pageID, page }) {
                   display: displayHeaderShortLogo,
                   transform: transformHeaderShortLogo,
                 }}>
-                <Link to='/dashboard'>
+                <a href='/dashboard'>
                   <img
                     src={logo}
                     height='40'
                     className='d-inline-block align-center'
                     alt='Students Hub logo'
                   />
-                </Link>
+                </a>
               </div>
               <SearchHeader />
               <NotificationPopUp />
