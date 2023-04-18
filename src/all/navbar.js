@@ -291,9 +291,8 @@ function MainNavbar({ pageID }) {
         {/* <Text style={{ marginTop: '500px' }}>*sono la home* aaaaaa</Text> */}
       </div>
       <Carousel />
-      <Space h="md" />
-      {/* asssssssssssaaaaaaaaaaaaaaaaaaaaaasaaaa */}
 
+      <Space h="md" />
       <Card withBorder shadow="sm" radius="md" >
         <Card.Section withBorder inheritPadding py="xs">
           <Group position="apart">
@@ -302,11 +301,8 @@ function MainNavbar({ pageID }) {
 
           </Group>
         </Card.Section>
-        <Card.Section mt="sm" pb="md">
-
-          <div className='post-container'>
-            <Post />
-          </div>
+        <Card.Section mt="md" pb="md" inheritPadding>
+          <Post />
         </Card.Section>
 
       </Card>
