@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text } from '@mantine/core'
 
-const Notification = ({ title, date, content }) => {
+const Notification = ({ title, date, content, tema }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   // TO DO → link notifica (backend)
@@ -10,7 +10,13 @@ const Notification = ({ title, date, content }) => {
     <div
       style={{
         transition: 'background-color 0.3s',
-        backgroundColor: isHovered ? '#f7f8f9' : '#fff',
+        backgroundColor: isHovered
+          ? tema === 'dark'
+            ? '#1a344c'
+            : '#f7f8f9'
+          : tema === 'dark'
+          ? '#25262b'
+          : '#fff',
         height: 80,
         cursor: 'pointer',
         display: 'flex',

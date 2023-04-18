@@ -1,0 +1,8 @@
+.input-margin-top {
+  margin-top: 10px;
+}
+
+.input-center {
+  display: flex;
+  justify-content: center;
+}

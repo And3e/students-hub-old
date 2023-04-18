@@ -1,0 +1,42 @@
+.account-container {
+  height: 100%;
+  padding: 20px;
+}
+
+.account-main {
+  margin-top: 30px;
+}
+
+.side-account-container {
+  width: 200px;
+}
+
+.mantine-Switch-body {
+  justify-content: space-between;
+}
+
+.colonna-account {
+  padding-left: 20px;
+}
+
+.mantine-Switch-track {
+  background-color: #acafb3;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-header h4 {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.mantine-TextInput-input {
+  cursor: default;
+}
+
+.account-space-up {
+  margin-top: 10px;
+}

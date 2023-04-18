@@ -1,0 +1,20 @@
+.calendar-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.calendar-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.day-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}

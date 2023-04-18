@@ -1,0 +1,62 @@
+.calendar-day-container {
+  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0094de;
+  color: white;
+}
+
+.calendar-day {
+  position: relative;
+  animation: border-to-center 1.5s linear infinite;
+}
+
+@keyframes border-to-center {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  55% {
+    transform: scale(1);
+  }
+  100% {
+  }
+}
+
+.mantine-Day-day {
+  border-radius: 100px;
+}
+
+.mantine-na8mw9[data-selected] {
+  border: 1.5px solid #0094de;
+  background-color: rgba(0, 0, 0, 0);
+  color: inherit;
+}
+
+.mantine-na8mw9[data-selected]:hover {
+  border: 1.5px solid #1c7ed6;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.mantine-101mdw0[data-selected] {
+  border: 1.5px solid #0094de;
+  background-color: rgba(0, 0, 0, 0);
+  color: inherit;
+}
+
+.mantine-101mdw0[data-selected]:hover {
+  border: 1.5px solid #0094de;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.mantine-101mdw0[data-weekend] {
+  color: #fa5252;
+}

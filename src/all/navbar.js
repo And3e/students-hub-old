@@ -1,12 +1,19 @@
 import { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet'
+import { useWindowScroll } from '@mantine/hooks'
+import { IconArrowUp } from '@tabler/icons-react'
 
 import {
   AppShell,
+  Affix,
   Navbar,
   Header,
   MediaQuery,
+  Button,
   Burger,
+  Transition,
+  rem,
+  MantineProvider,
   useMantineTheme,
 } from '@mantine/core'
 
@@ -22,9 +29,12 @@ import './navbar.css'
 // imgs
 import logo from './../img/logos/logo-tr.png'
 import logo_scritta from './../img/logos/logo-scritta-tr.png'
+import logo_scrittaDark from './../img/logos/logo-scritta-white-tr.png'
 
-function MainNavbar({ pageID, page }) {
+function MainNavbar({ pageID, page, tema }) {
   const theme = useMantineTheme()
+  const [scroll, scrollTo] = useWindowScroll()
+
   const [opened, setOpened] = useState(false)
   const refHeader = useRef(null)
   const refSideBar = useRef(null)
@@ -183,100 +193,117 @@ function MainNavbar({ pageID, page }) {
   }
 
   return (
-    <AppShell
-      styles={{
-        main: {
-          background:
-            theme.colorScheme === 'dark'
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-        },
+    <MantineProvider
+      theme={{
+        colorScheme: tema,
       }}
-      navbarOffsetBreakpoint='sm'
-      asideOffsetBreakpoint='sm'
-      navbar={
-        <div
-          onMouseEnter={handleSidebarMouseOver}
-          onMouseLeave={handleSidebarMouseOut}
-          ref={refSideBar}>
-          <Navbar
-            p='md'
-            hiddenBreakpoint='sm'
-            hidden={!opened}
-            width={{ sm: 60, lg: 200 }}
-            className='side-bar'
-            style={{ width: widthSideBar }}
-            ref={refSBNavbar}>
-            <SearchSide />
-            <SideMenu
-              isSBExpanded={widthSideBar}
-              pageID={pageID}
-              onChildData={handleChildData}
-            />
-          </Navbar>
-        </div>
-      }
-      header={
-        <Header
-          height={{ base: 50, md: 70 }}
-          p='md'
-          className='navbar-container'
-          ref={refHeader}>
-          <div className='header-container'>
-            <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size='sm'
-                color={theme.colors.gray[6]}
-                mr='xl'
+      withGlobalStyles
+      withNormalizeCSS>
+      <AppShell
+        styles={{
+          main: {
+            background:
+              tema === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+          },
+        }}
+        navbarOffsetBreakpoint='sm'
+        asideOffsetBreakpoint='sm'
+        navbar={
+          <div
+            onMouseEnter={handleSidebarMouseOver}
+            onMouseLeave={handleSidebarMouseOut}
+            ref={refSideBar}>
+            <Navbar
+              p='md'
+              hiddenBreakpoint='sm'
+              hidden={!opened}
+              width={{ sm: 60, lg: 200 }}
+              className='side-bar'
+              style={{ width: widthSideBar }}
+              ref={refSBNavbar}>
+              <SearchSide tema={tema} />
+              <SideMenu
+                isSBExpanded={widthSideBar}
+                pageID={pageID}
+                onChildData={handleChildData}
               />
-            </MediaQuery>
-
-            <div
-              className='logo-header'
-              style={{ display: displayLogoHeader, width: widthLogoHeader }}>
-              <a href='/dashboard'>
-                <img
-                  src={logo_scritta}
-                  height='35'
-                  className='d-inline-block align-center'
-                  alt='Students Hub logo long'
+            </Navbar>
+          </div>
+        }
+        header={
+          <Header
+            height={{ base: 50, md: 70 }}
+            p='md'
+            className='navbar-container'
+            ref={refHeader}>
+            <div className='header-container'>
+              <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size='sm'
+                  color={theme.colors.gray[6]}
+                  mr='xl'
                 />
-              </a>
-            </div>
-            <div
-              className='header-sub-container'
-              style={{ width: widthHeaderSubContainer }}>
-              <div style={{ display: displayHeaderSupportChild }} />
+              </MediaQuery>
+
               <div
-                style={{
-                  display: displayHeaderShortLogo,
-                  transform: transformHeaderShortLogo,
-                }}>
+                className='logo-header'
+                style={{ display: displayLogoHeader, width: widthLogoHeader }}>
                 <a href='/dashboard'>
                   <img
-                    src={logo}
-                    height='40'
+                    src={tema === 'dark' ? logo_scrittaDark : logo_scritta}
+                    height='35'
                     className='d-inline-block align-center'
-                    alt='Students Hub logo'
+                    alt='Students Hub logo long'
                   />
                 </a>
               </div>
-              <SearchHeader />
-              <NotificationPopUp />
-              <NotificationSide />
+              <div
+                className='header-sub-container'
+                style={{ width: widthHeaderSubContainer }}>
+                <div style={{ display: displayHeaderSupportChild }} />
+                <div
+                  style={{
+                    display: displayHeaderShortLogo,
+                    transform: transformHeaderShortLogo,
+                  }}>
+                  <a href='/dashboard'>
+                    <img
+                      src={logo}
+                      height='40'
+                      className='d-inline-block align-center'
+                      alt='Students Hub logo'
+                    />
+                  </a>
+                </div>
+                <SearchHeader tema={tema} />
+                <NotificationPopUp tema={tema} />
+                <NotificationSide />
+              </div>
             </div>
-          </div>
-        </Header>
-      }>
-      <Helmet>
-        <title>Students Hub {handlePageTitle()}</title>
-      </Helmet>
-      <div className='content' style={{ marginLeft: marginLeftContent }}>
-        {page}
-      </div>
-    </AppShell>
+          </Header>
+        }>
+        <Helmet>
+          <title>Students Hub {handlePageTitle()}</title>
+        </Helmet>
+        <div className='content' style={{ marginLeft: marginLeftContent }}>
+          {page}
+        </div>
+      </AppShell>
+
+      <Affix position={{ bottom: rem(20), right: rem(20) }}>
+        <Transition transition='slide-up' mounted={scroll.y > 0}>
+          {(transitionStyles) => (
+            <Button
+              leftIcon={<IconArrowUp size='1rem' />}
+              style={transitionStyles}
+              className='to-top-btn'
+              onClick={() => scrollTo({ y: 0 })}></Button>
+          )}
+        </Transition>
+      </Affix>
+    </MantineProvider>
   )
 }
 

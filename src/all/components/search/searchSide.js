@@ -5,7 +5,7 @@ import { Search } from 'react-bootstrap-icons'
 
 import './search-side.css'
 
-function SearchSide() {
+function SearchSide({ tema }) {
   const input = useRef(null)
   const [isClicked, setIsClicked] = useState(false)
   const [displaySearchSide, setDisplaySearchSide] = useState('')
@@ -48,7 +48,11 @@ function SearchSide() {
               <Search />
             </button>
           </div>
-          <div className='side-input-container'>
+          <div
+            className='side-input-container'
+            style={{
+              backgroundColor: tema === 'dark' ? '#28292e' : '#f5f5f5',
+            }}>
             <input
               type='search'
               placeholder='Cerca qualcosa...'

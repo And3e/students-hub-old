@@ -8,7 +8,7 @@ import SeeOtherBtn from './see-other.js'
 // data
 import notificationsData from './notification-data.js'
 
-const NotificationList = () => {
+const NotificationList = ({ tema }) => {
   const [notifications, setNotifications] = useState(notificationsData)
 
   const handleDelete = (id) => {
@@ -35,11 +35,12 @@ const NotificationList = () => {
               date={notification.date}
               content={notification.content}
               isFirst={notification.isFirst}
+              tema={tema}
             />
           </div>
         </SwipeToDelete>
       ))}
-      {showButton && <SeeOtherBtn />}
+      {showButton && <SeeOtherBtn tema={tema} />}
     </div>
   )
 }

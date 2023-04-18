@@ -21,4 +21,19 @@
 }
 
 .content {
+  height: 100%;
+}
+
+.to-top-btn {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #0094de;
+}
+
+.to-top-btn:hover {
+  background-color: #1c7ed6;
+}
+
+.mantine-Button-icon {
+  margin: 0px;
 }

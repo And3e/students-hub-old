@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import './see-other.css'
 
-function SeeOtherBtn() {
+function SeeOtherBtn({ tema }) {
   const [isHovered, setIsHovered] = useState(false)
   const [opened, { close, open }] = useDisclosure(false)
 
@@ -27,7 +27,11 @@ function SeeOtherBtn() {
             <div
               style={{
                 transition: 'background-color 0.3s',
-                backgroundColor: isHovered ? '#f7f8f9' : 'transparent',
+                backgroundColor: isHovered
+                  ? tema === 'dark'
+                    ? '#1a344c'
+                    : '#f7f8f9'
+                  : 'transparent',
               }}
               className='dots-container'
               onMouseEnter={handleEnter}

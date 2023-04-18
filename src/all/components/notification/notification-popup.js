@@ -11,7 +11,7 @@ import './notification-popup.css'
 import { BellFill } from 'react-bootstrap-icons'
 import NotificationList from './notification-list.js'
 
-const NotificationPopUp = forwardRef((props, ref) => {
+const NotificationPopUp = forwardRef(({ tema }, ref) => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false)
   const [displayPopup, setDisplayPopup] = useState(false)
 
@@ -82,7 +82,7 @@ const NotificationPopUp = forwardRef((props, ref) => {
         </Button>
       </Popover.Target>
       <Popover.Dropdown className='notification-container'>
-        <NotificationList />
+        <NotificationList tema={tema} />
       </Popover.Dropdown>
     </Popover>
   )

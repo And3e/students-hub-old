@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Search } from 'react-bootstrap-icons'
 import './search-header.css'
 
-function SearchHeader() {
+function SearchHeader({ tema }) {
   const [isExpanded, setIsExpanded] = useState(false)
   const inputRef = useRef(null)
   const [displaySearchHeaderContainer, setDisplaySearchHeaderContainer] =
@@ -113,6 +113,16 @@ function SearchHeader() {
       style={{ display: displaySearchHeaderContainer }}>
       <div
         className={`search-box ${isExpanded ? 'expanded' : ''}`}
+        style={{
+          backgroundColor:
+            tema === 'dark'
+              ? isExpanded
+                ? '#28292e'
+                : ''
+              : isExpanded
+              ? '#f5f5f5'
+              : '',
+        }}
         onClick={handleClick}>
         <Search className='search-icon' />
         <div

@@ -1,0 +1,18 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+}
+
+.error-paper {
+  width: fit-content;
+  padding: 20px 30px 20px 30px;
+  text-align: center;
+}
+
+.error-paper h1 {
+  font-size: 50px;
+}
+
+.error-paper p {
+  font-size: 20px;
+}
