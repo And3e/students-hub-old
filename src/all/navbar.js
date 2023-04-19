@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-
+import { useState } from 'react'
+import { useEffect } from 'react'
 import {
   AppShell,
   Navbar,
@@ -9,7 +7,26 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
+  Space,
+  Group,
+  Card,
 } from '@mantine/core'
+
+import { useRef } from 'react'
+import Carousel from '../pages/home/carousel'
+import Post from '../pages/home/post'
+
+
+import './navbar.css'
+
+/* imgs */
+import logo from './../img/logos/logo-tr.png'
+import logo_scritta from './../img/logos/logo-scritta-tr.png'
+
+/* logos */
+import { BellFill } from 'react-bootstrap-icons'
+import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import SearchHeader from './components/search/searchHeader.js'
 import SearchSide from './components/search/searchSide.js'
@@ -80,8 +97,8 @@ function MainNavbar({ pageID, page }) {
       setTimeout(() => {
         setWidthHeaderSubContainer(
           document.querySelector('.header-container').offsetWidth -
-            document.querySelector('.logo-header').offsetWidth +
-            'px'
+          document.querySelector('.logo-header').offsetWidth +
+          'px'
         )
       }, 1)
     }
@@ -277,6 +294,22 @@ function MainNavbar({ pageID, page }) {
       <div className='content' style={{ marginLeft: marginLeftContent }}>
         {page}
       </div>
+      <Carousel />
+
+      <Space h="md" />
+      <Card withBorder shadow="sm" radius="md" >
+        <Card.Section withBorder inheritPadding py="xs">
+          <Group position="apart">
+
+            <Text weight={700}>Bacheca</Text>
+
+          </Group>
+        </Card.Section>
+        <Card.Section mt="md" pb="md" inheritPadding>
+          <Post />
+        </Card.Section>
+
+      </Card>
     </AppShell>
   )
 }
