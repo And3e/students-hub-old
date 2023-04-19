@@ -280,7 +280,11 @@ export default function Posts() {
                                     key={"modal-" + post.id}
                                     weight={500}
                                 >
-                                    {post.title}
+                                    {post.title.length > maxTitleLength ? (
+                                            post.title.slice(0, maxTitleLength) + '...'
+                                        ) : (
+                                            post.title
+                                        )}
                                 </Text>
                                 <Text
                                     key={"modal-" + post.id}
