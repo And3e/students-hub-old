@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react'
+
+import { Space, Group, Card, Text } from '@mantine/core'
+import Carousel from './pages/home/carousel'
+import Post from './pages/home/post'
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,21 +23,26 @@ import AccountLogin from './pages/account/account-login.js'
 import AccountPage from './pages/account/account-page.js'
 
 function App() {
-  const [tema, setTema] = useState('dark')
-  const [logged, setLogged] = useState(false)
+  const [tema, setTema] = useState(() => {
+    const storedCount = localStorage.getItem('tema')
+    return storedCount === 'dark' ? 'dark' : 'light'
+  })
 
-  console.log(logged)
-
-  useEffect(() => {
-    const savedContent = localStorage.getItem('logged')
-    if (savedContent) {
-      setLogged(savedContent)
-    }
-  }, [])
+  const [logged, setLogged] = useState(() => {
+    const storedLogged = localStorage.getItem('utente')
+    return storedLogged === true ? true : false
+  })
 
   useEffect(() => {
-    localStorage.setItem('logged', logged)
+    localStorage.setItem('utente', logged)
   }, [logged])
+
+  useEffect(() => {
+    localStorage.setItem('tema', tema)
+  }, [tema])
+
+  console.log('logged ' + logged)
+  console.log('tema ' + tema)
 
   return (
     <Router>
@@ -44,7 +54,29 @@ function App() {
         />
         <Route
           path='/dashboard'
-          element={<MainNavbar pageID={0} tema={tema} />}
+          element={
+            <MainNavbar
+              pageID={0}
+              tema={tema}
+              page={
+                <>
+                  <Carousel />
+
+                  <Space h='md' />
+                  <Card withBorder shadow='sm' radius='md'>
+                    <Card.Section withBorder inheritPadding py='xs'>
+                      <Group position='apart'>
+                        <Text weight={700}>Bacheca</Text>
+                      </Group>
+                    </Card.Section>
+                    <Card.Section mt='md' pb='md' inheritPadding>
+                      <Post />
+                    </Card.Section>
+                  </Card>
+                </>
+              }
+            />
+          }
           exact
         />
         <Route

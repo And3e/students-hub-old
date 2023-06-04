@@ -58,7 +58,7 @@ function AccountLogin({ tema, logged, setLogged }) {
               <Login logged={logged} setLogged={setLogged} />
             </Tabs.Panel>
             <Tabs.Panel value='registrati'>
-              <Register setLogged={setLogged} />
+              <Register logged={logged} setLogged={setLogged} />
             </Tabs.Panel>
           </Tabs>
         </Paper>

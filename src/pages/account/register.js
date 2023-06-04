@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import { useForm } from '@mantine/form'
 import {
   TextInput,
@@ -11,15 +12,22 @@ import { useNavigate } from 'react-router-dom'
 
 import './login.css'
 
-function Register({ setLogged }) {
+function Register({ logged, setLogged }) {
   const navigate = useNavigate()
 
   function handleSubmitClick() {
     setTimeout(() => {
       setLogged(true)
-      navigate('/account')
     }, 2000)
   }
+
+  useEffect(() => {
+    if (logged) {
+      setTimeout(() => {
+        navigate('/account')
+      }, 1)
+    }
+  }, [logged, navigate])
 
   const validateEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

@@ -17,13 +17,11 @@ function Login({ logged, setLogged }) {
 
   useEffect(() => {
     if (logged) {
-      navigate('/account')
+      setTimeout(() => {
+        navigate('/account')
+      }, 1)
     }
   }, [logged, navigate])
-
-  useEffect(() => {
-    localStorage.setItem('logged', logged)
-  }, [logged])
 
   const validateEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

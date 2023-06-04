@@ -7,18 +7,19 @@ function Account({ logged, setLogged }) {
   const navigate = useNavigate()
 
   function handleEscClick() {
-    setLogged(false)
+    setTimeout(() => {
+      setLogged(false)
+      navigate('/')
+    }, 2000)
   }
 
   useEffect(() => {
     if (!logged) {
-      // navigate('/login')
+      setTimeout(() => {
+        navigate('/login')
+      }, 1)
     }
   }, [logged, navigate])
-
-  useEffect(() => {
-    localStorage.setItem('logged', logged)
-  }, [logged])
 
   return (
     <div className='colonna-account'>
@@ -40,7 +41,7 @@ function Account({ logged, setLogged }) {
           </div>
           <div>
             <Button
-              onClick={handleEscClick()}
+              onClick={() => handleEscClick()}
               variant='outline'
               color='orange'
               radius='md'>
