@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { Group } from '@mantine/core'
 
 import './calendar.css'
@@ -9,7 +9,7 @@ import CalendarDay from './calendar-day.js'
 
 function CalendarPage() {
   const [selected, setSelected] = useState(new Date(new Date().getTime()))
-  const [heightDayRight, setHeightDayRight] = useState()
+  const [heightDayRight] = useState()
 
   const handleTitle = () => {
     let day, month
@@ -115,7 +115,7 @@ function CalendarPage() {
 
   useEffect(() => {
     function handleResize() {
-      const dayLeft = document.querySelector('.day-left')
+      // const dayLeft = document.querySelector('.day-left')
       // setHeightDayRight(dayLeft.offsetHeight)
     }
 

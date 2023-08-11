@@ -13,15 +13,13 @@ import {
     // useMantineTheme,
 } from "@mantine/core";
 
-import { IconDots, IconEye, IconFileZip, IconTrash } from "@tabler/icons-react";
+import { IconDots, IconTrash } from "@tabler/icons-react";
 
 import { ReplyFill, Bookmark, BookmarkFill, EyeFill } from "react-bootstrap-icons";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import data from "./post-data.js";
 import './modal.css'
 import { useMediaQuery } from '@mantine/hooks';
-
-
 
 export default function Posts() {
     /*function sliceMessages(data) {
